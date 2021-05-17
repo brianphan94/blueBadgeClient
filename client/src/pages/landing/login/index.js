@@ -1,5 +1,7 @@
 import {useState} from 'react'
 
+import {Col, Form, Input, Button, Label, FormGroup} from 'reactstrap'
+
 const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -28,19 +30,32 @@ const Login = (props) => {
         })
     }
 
-    return(
-        <div>
-        <h1>Login</h1>
-        <form onSubmit={auth}>
-            <input type="email" aria-label="email" placeholder="example@example.com"
-            value={email}
-            onChange={(e) => {setEmail(e.target.value)}}/>
-            <input type="password" aria-label="password" placeholer="Password" value={password} onChange={(e) => {setPassword(e.target.value)}}>
-            </input>
-            <button type="submit">Login</button>
-        </form>
 
-        </div>
+
+    return(
+       
+        
+        <Form onSubmit={auth}>
+            <FormGroup>
+            <Col md={12} className="email">
+            <Label> Email</Label> 
+            <Input type="email" aria-label="email" placeholder="example@example.com"
+            value={email}
+            required
+            onChange={(e) => {setEmail(e.target.value)}}/>
+            </Col>
+            
+            
+            <Col md={12} className="password">
+            <Label>Password</Label>
+            <Input type="password" aria-label="password" placeholer="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}>
+            </Input>
+            </Col>
+            <Button outline color="warning" size="lg" type="submit">Login</Button>
+            </FormGroup>
+        </Form>
+
+       
     )
 }
 

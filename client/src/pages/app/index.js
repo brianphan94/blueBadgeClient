@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-
+      
       <Auth updateToken={updateToken}/>
       
     </div>

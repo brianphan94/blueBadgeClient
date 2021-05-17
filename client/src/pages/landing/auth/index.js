@@ -1,6 +1,8 @@
 import Login from '../login'
 import Register from '../register'
 
+import './auth.scss'
+
 
 const Auth = (props) => {
     
