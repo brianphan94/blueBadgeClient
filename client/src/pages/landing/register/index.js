@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import {Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroupm, Button, FormGroup} from 'reactstrap'
+import {useState, useEffect} from 'react'
+import {Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, Button, FormGroup} from 'reactstrap'
 //import '../auth/auth.scss'
 
 const Register = (props) => {
@@ -10,13 +10,13 @@ const Register = (props) => {
 
     const toggle = () => setModal(!modal)
     const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
-
-    // const changeUnmountOnClose = (e) => {
-    //     let value = e.target.value;
-    //     setUnmountOnClose(JSON.parse(value))
     
-    // }
     
+        // const changeUnmountOnClose = (e) => {
+        //     let value = e.target.value;
+        //     setUnmountOnClose(JSON.parse(value))
+        
+        // }
 
     let authTwo = (e) => {
         e.preventDefault()
@@ -38,6 +38,12 @@ const Register = (props) => {
           })
     }
 
+    useEffect(() => {
+      setUnmountOnClose(true)
+    }, [])
+
+   
+
     return (
         <div>
         <button onClick={toggle}>Don't have an account? Sign up here!</button>
@@ -46,16 +52,19 @@ const Register = (props) => {
                 <ModalHeader toggle={toggle} close={closeBtn}>Create an Account</ModalHeader>
                 <ModalBody>
                     <input type="email" aria-label="email" placeholder="example@example.com"
+                    required
                     value={email}
                     onChange={(e) => {setEmail(e.target.value)}}
                     >
                     </input>
-                    <input type="password" aria-label="password" placeholer="Password" value={password} onChange={(e) => {setPassword(e.target.value)}}
+                    <input type="password" aria-label="password"
+                    required 
+                    placeholer="Password" value={password} onChange={(e) => {setPassword(e.target.value)}}
                     >
                     </input>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type="submit" onClick={toggle}>Sign Up</Button>
+                    <Button type="submit">Sign Up</Button>
                 </ModalFooter>
 
             </Form>

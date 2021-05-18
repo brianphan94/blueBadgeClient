@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-bottom: 5%;
+    
+    
+
+    .nav{
+        background-image: linear-gradient(to left, rgba(248, 248, 248, 0.153), transparent);
+        //box-shadow: 2px 2px 10px;
+        padding: 0px 0px 5px 5px;
+    }
+
+}
+
+
+    li{
+        list-style: none;
+    }
+

@@ -1,12 +1,89 @@
+body {
+  background-image: url('https://images.unsplash.com/photo-1541474583361-bc9527eb46d6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1980&q=80');
+  //background-position: center;
+  background-position-x:center;
+  background-position-y:top ;
+
+}
 
 .App {
   display: flex;
   flex-direction: column;
-  height: 50vh;
-  margin: 10px;
-  margin-top: 15%;
-  text-align: center;
-  //border: 1px solid black;
- 
+  height: max-content;
+  text-align: center; 
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        margin:auto;
+        background-color: rgba(243, 245, 250, 0.221);
+        padding: 60px;
+    }
+
+    .email{
+        padding-bottom: 30px;
+        margin: auto;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.872);
+        font-size: 16px;
+        letter-spacing: 1.5px;
+    
+        input{
+            box-shadow: 2px 2px 4px;
+        }
+       
+        label{
+            display: flex;
+            width:100%;
+            font-size: larger;
+        }
+    }
+    .password{
+        padding-bottom: 30px;
+        margin: auto;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.872);
+        font-size: 16px;
+        letter-spacing: 1.5px;
+    
+    
+        label{
+            display: flex;
+            font-size: larger;
+        }
+    
+        input{
+            box-shadow: 2px 2px 4px;
+        }
+    }
+}
+
+button{
+    margin-top: 10%;
+    color: rgb(243, 242, 242);
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+
+    &:hover{
+        
+        color: black;
+    }
+
+}
+
+
+
+
+
+
+
 

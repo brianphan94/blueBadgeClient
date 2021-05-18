@@ -4,6 +4,9 @@ import './App.scss';
 import {useState, useEffect} from 'react'
 
 import Auth from '../landing/auth/'
+import Header from '../../components/header'
+import Home from '../home-page'
+
 
 function App() {
   const [token, setSessionToken] = useState('')
@@ -20,11 +23,23 @@ function App() {
     
   }
 
+  const clearToken = () => {
+    localStorage.clear();
+    setSessionToken('')
+  }
+
+  const protectedViews = () => {
+    return(token === localStorage.getItem('token') ? <Home token={token} clickLogout={clearToken}/> : <Auth updateToken={updateToken} />)
+  }
+
+  
+
   return (
     <div className="App">
       
-      <Auth updateToken={updateToken}/>
-      
+      <Header />
+      {protectedViews()}
+  
     </div>
   );
 }

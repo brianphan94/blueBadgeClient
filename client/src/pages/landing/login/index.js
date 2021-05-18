@@ -29,12 +29,8 @@ const Login = (props) => {
             console.log(err)
         })
     }
-
-
-
+    
     return(
-       
-        
         <Form onSubmit={auth}>
             <FormGroup>
             <Col md={12} className="email">
@@ -44,14 +40,13 @@ const Login = (props) => {
             required
             onChange={(e) => {setEmail(e.target.value)}}/>
             </Col>
-            
-            
             <Col md={12} className="password">
             <Label>Password</Label>
             <Input type="password" aria-label="password" placeholer="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}>
             </Input>
             </Col>
             <Button outline color="warning" size="lg" type="submit">Login</Button>
+
             </FormGroup>
         </Form>
 
