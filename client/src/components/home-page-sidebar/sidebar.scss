@@ -1,0 +1,28 @@
+.sideBarDiv {
+    
+    margin-top: 10px;
+    border: 1px solid black;
+  
+    a {
+        color: white;
+        font-size: x-large;
+        margin: auto;
+    }
+
+    button {
+        border: none;
+        padding: 10px;
+        background-color: #ffba04;
+        box-shadow: 3px 3px 4px;
+    }
+
+    .nav {
+        background-color: rgba(243, 245, 250, 0.221);
+    }
+
+    li {
+        color: white;
+        font-size: large;
+        padding: 10px;
+    }
+}

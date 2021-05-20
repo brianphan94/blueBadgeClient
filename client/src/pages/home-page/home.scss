@@ -1,3 +1,25 @@
-h1{
-    color: white
+.content {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 80vh;
+    
+    .homeContent {
+        display: flex;
+        flex-direction: row;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        box-shadow: 8px 0px 5px black;
+        background-color: rgba(243, 245, 250, 0.221);
+    }
+
+    h1 {
+        color: white;
+        margin-top: 10px;
+    }
+
+    button {
+        margin: auto;
+    }
 }

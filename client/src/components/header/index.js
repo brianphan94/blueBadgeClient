@@ -9,10 +9,7 @@ const Header = (props) => {
     return(
         <div className="header">
             <Nav>
-            <NavItem>
             <img src={Logo}></img>
-            {/* <button  >Logout</button> */}
-            </NavItem>
             </Nav>
         
         </div>
