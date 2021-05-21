@@ -31,7 +31,7 @@ const Sidebar = (props) => {
                             <NavItem> 
                                 <Link to="/profile">Profile</Link>
                             </NavItem>
-                            <Button className="logout"outline color="warning" onClick={props.clickLogout}>Logout</Button>
+                            <Button className="logout" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
                 </Navbar>
