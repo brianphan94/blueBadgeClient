@@ -1,5 +1,8 @@
-import { Container, Nav, NavItem, Navbar, Collapse, NavbarToggler, NavbarBrand } from 'reactstrap'
+import {  Nav, NavItem, Navbar, Collapse,Button, NavbarToggler, Container } from 'reactstrap'
 import { useState } from 'react'
+import {Route, Link, Switch} from 'react-router-dom'
+import Profile from '../../pages/Profile/index'
+import Home from '../../pages/home-page/index'
 
 import './sidebar.scss'
 
@@ -12,30 +15,37 @@ const Sidebar = (props) => {
     const [collapsed, setCollapsed] = useState(true)
     const toggleNavbar = () => setCollapsed(!collapsed)
 
+    
+
     return (
-        <Container>
-            <div className="sideBarDiv">
-                <NavbarBrand> App Title
-            </NavbarBrand>
+            <div>
+            <Container fluid="md" className="sideBarDiv">
                 <Navbar className="side-bar" light>
-                    <NavbarToggler onClick={toggleNavbar} />
+                    <NavbarToggler outline color="warning" onClick={toggleNavbar}></NavbarToggler>
                     <Collapse isOpen={!collapsed} navbar>
-                        <Nav vertical>
+                        <Nav horizontal>
                             <NavItem>
-                                Profile
+                              <Link to="/">Home</Link>
                             </NavItem>
-                            <hr />
-                            <NavItem> Item 2</NavItem>
-                            <hr />
-                            <NavItem> Item 3</NavItem>
-                            <hr />
-                            <NavItem> Item 4</NavItem>
+                         
+                            <NavItem> 
+                                <Link to="/profile">Profile</Link>
+                            </NavItem>
+                            <Button className="logout"outline color="warning" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
                 </Navbar>
+                </Container>
                 
-            </div>
-        </Container>
+                <div className="Route">
+                    <Switch>
+                        <Route exact path="/"><Home /></Route>
+                        <Route exact path="/profile"><Profile /></Route>
+                    </Switch>
+                </div>
+                </div>
+            
+     
 
 
 

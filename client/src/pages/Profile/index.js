@@ -1,6 +1,8 @@
-const Profile = () => {
+import { Container } from "reactstrap"
+
+const Profile = (props) => {
     return(
-        <div>Profile Page</div>
+        <Container className="homeContent"><h1>Profile Page</h1></Container>
     )
 }
 

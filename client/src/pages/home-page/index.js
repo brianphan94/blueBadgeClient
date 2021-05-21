@@ -1,8 +1,29 @@
 import './home.scss'
-import Sidebar from '../../components/home-page-sidebar'
-import { Button, Container, Col } from 'reactstrap'
+
+import { Container, Col } from 'reactstrap'
+import { useState, useEffect } from 'react'
 
 const Home = (props) => {
+
+    const [reviews, getReviews] = useState([])
+
+    let everyPost = () => {
+        fetch("http://localhost:4040/review/all", {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            }),
+        }).then(res => res.json())
+            .then(data => {
+                getReviews(data.review)
+                console.log(data)
+            })
+    }
+
+    useEffect(() => {
+        everyPost()
+    }, [])
 
 
 
@@ -10,15 +31,13 @@ const Home = (props) => {
     return (
 
 
-        <Container fluid className="content">
-            <Container fluid className="homeContent">
-                <Sidebar />
-                <Col xs={7} md={10}>
+        
+            <Container className="homeContent">
+                <Col>
                     <h1>User home page</h1>
-                    <Button onClick={props.clickLogout}>Logout</Button>
                 </Col>
             </Container>
-        </Container>
+      
 
 
 

@@ -2,10 +2,12 @@ import './App.scss';
 
 //import { Switch, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react'
-
+import {BrowserRouter as Router} from 'react-router-dom'
+ 
 import Auth from '../landing/auth/'
 import Header from '../../components/header'
 import Home from '../home-page'
+import Sidebar from '../../components/home-page-sidebar'
 
 
 
@@ -30,15 +32,15 @@ function App() {
   }
 
   const protectedViews = () => {
-    return(token === localStorage.getItem('token') ? <Home token={token} clickLogout={clearToken}/> : <Auth updateToken={updateToken} />)
+    return(token === localStorage.getItem('token') ? <Sidebar token={token} clickLogout={clearToken}/> : <Auth updateToken={updateToken} />)
   }
 
   
 
   return (
     <div className="App">
-      
       <Header />
+     
       {protectedViews()}
   
     </div>
