@@ -1,8 +1,8 @@
-import React from 'react';
+//import React from 'react';
 import './home.scss'
-import {Button} from 'reactstrap'
-import {useState, useEffect} from 'react';
-import {Card} from 'reactstrap';
+//import {Button} from 'reactstrap'
+import { useState, useEffect } from 'react';
+import { Card } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 
@@ -10,26 +10,29 @@ const Home = (props) => {
 
     const [reviews, getReviews] = useState([])
 
-    let everyPost = () => {
-        fetch('http://localhost:4040/review/all', {
+    const everyPost = () => {
+        console.log("TOKEN: ", props.token);
+        fetch(`http://localhost:4040/review/all`, {
             method: 'GET',
-            headers: new Headers ({
+            headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
-            }),
-        }) .then(res => res.json())
-        .then(data => {
-            getReviews(data.review)
-            console.log(data)
-        })
+            })
+        }).then((res) => res.json())
+            .then((data) => {
+                getReviews(data.review)
+                console.log(data)
+            }).catch(err => {
+                console.log("hit: ", err)
+            })
     }
 
     useEffect(() => {
         everyPost()
     }, [])
-    
 
-    return(
+
+    return (
         <div>
             <h1>User home page</h1>
             <div className='review-feed-box'>
@@ -41,7 +44,7 @@ const Home = (props) => {
                             <p className='review-body'>{review.reviewBody}</p>
                             <div className='review-footer'>
                                 <img className='userlogo' src={UserLogo} />
-                                <p>Review by: {review.email}</p>
+                                <p>Review by: {review.username}</p>
                             </div>
                             
                         </li>
@@ -51,7 +54,7 @@ const Home = (props) => {
                 )}
             </Card>
         </div>
-            <Button onClick={props.clickLogout}>Logout</Button>
+            {/* <Button onClick={props.clickLogout}>Logout</Button> */}
         </div>
     )
 }
