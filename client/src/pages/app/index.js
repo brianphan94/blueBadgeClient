@@ -2,11 +2,11 @@ import './App.scss';
 
 //import { Switch, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react'
-import {BrowserRouter as Router} from 'react-router-dom'
+
  
 import Auth from '../landing/auth/'
 import Header from '../../components/header'
-import Home from '../home-page'
+
 import Sidebar from '../../components/home-page-sidebar'
 
 
@@ -40,6 +40,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+     
      
       {protectedViews()}
   

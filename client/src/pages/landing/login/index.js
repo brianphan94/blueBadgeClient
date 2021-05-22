@@ -19,11 +19,13 @@ const Login = (props) => {
                     password: password
                 }
             })
+            
         })
         .then(res => res.json())
         .then(json => {
             props.updateToken(json.token)
             console.log(json.token)
+           
         })
         .catch(err => {
             console.log(err)

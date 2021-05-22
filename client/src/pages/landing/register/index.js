@@ -1,23 +1,18 @@
-import {useState, useEffect} from 'react'
-import {Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, Button, FormGroup} from 'reactstrap'
-//import '../auth/auth.scss'
+import {useState} from 'react'
+import {Modal, ModalHeader, ModalBody, ModalFooter, Form, Button} from 'reactstrap'
+
 
 const Register = (props) => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [modal, setModal] = useState(false)
-    const [unmountOnClose, setUnmountOnClose] = useState(true)
 
     const toggle = () => setModal(!modal)
     const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
     
     
-        // const changeUnmountOnClose = (e) => {
-        //     let value = e.target.value;
-        //     setUnmountOnClose(JSON.parse(value))
-        
-        // }
+       
 
     let authTwo = (e) => {
         e.preventDefault()
@@ -40,9 +35,7 @@ const Register = (props) => {
           })
     }
 
-    // useEffect(() => {
-    //   setUnmountOnClose(true)
-    // }, [])
+   
 
    
 

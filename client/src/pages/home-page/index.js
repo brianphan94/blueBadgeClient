@@ -1,7 +1,7 @@
 import './home.scss'
 
 import { Container, Col } from 'reactstrap'
-import { useState, useEffect } from 'react'
+
 
 const Home = (props) => {
 
