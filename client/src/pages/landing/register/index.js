@@ -1,22 +1,18 @@
-import {useState, useEffect} from 'react'
-import {Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, Button, FormGroup} from 'reactstrap'
-//import '../auth/auth.scss'
+import {useState} from 'react'
+import {Modal, ModalHeader, ModalBody, ModalFooter, Form, Button} from 'reactstrap'
+
 
 const Register = (props) => {
     const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [modal, setModal] = useState(false)
-    const [unmountOnClose, setUnmountOnClose] = useState(true)
 
     const toggle = () => setModal(!modal)
     const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
     
     
-        // const changeUnmountOnClose = (e) => {
-        //     let value = e.target.value;
-        //     setUnmountOnClose(JSON.parse(value))
-        
-        // }
+       
 
     let authTwo = (e) => {
         e.preventDefault()
@@ -28,6 +24,7 @@ const Register = (props) => {
             body: JSON.stringify({
                 user:{
                     email: email,
+                    username: username,
                     password:password
                 }
             })
@@ -38,16 +35,14 @@ const Register = (props) => {
           })
     }
 
-    useEffect(() => {
-      setUnmountOnClose(true)
-    }, [])
+   
 
    
 
     return (
         <div>
         <button onClick={toggle}>Don't have an account? Sign up here!</button>
-            <Modal isOpen={modal} toggle={toggle} unmountOnClose={unmountOnClose}>
+            <Modal isOpen={modal} toggle={toggle} >
             <Form onSubmit={authTwo}>
                 <ModalHeader toggle={toggle} close={closeBtn}>Create an Account</ModalHeader>
                 <ModalBody>
@@ -57,6 +52,9 @@ const Register = (props) => {
                     onChange={(e) => {setEmail(e.target.value)}}
                     >
                     </input>
+                    <input type="text" aria-label="username" placeholder="username here!"
+                    value={username} onChange={(e) => {setUsername(e.target.value)}}></input>
+
                     <input type="password" aria-label="password"
                     required 
                     placeholer="Password" value={password} onChange={(e) => {setPassword(e.target.value)}}
