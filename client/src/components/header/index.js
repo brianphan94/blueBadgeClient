@@ -1,23 +1,19 @@
-import {Nav} from 'reactstrap'
+import { Nav } from 'reactstrap'
 import './header.scss'
 
 import Logo from './Logo.png'
 
 
-const Header = (props) => {
+const Header = () => {
 
-    return(
+    return (
         <div className="header">
             <Nav>
-            <img src={Logo} alt="Logo"></img>
-           
+                <img src={Logo} alt="Logo"></img>
             </Nav>
         
         </div>
-        
     )
-
-
 }
 
 export default Header
