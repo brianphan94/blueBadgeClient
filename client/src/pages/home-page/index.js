@@ -1,6 +1,6 @@
-//import React from 'react';
+
 import './home.scss'
-//import {Button} from 'reactstrap'
+
 import { useState, useEffect } from 'react';
 import { Card, Container } from 'reactstrap';
 

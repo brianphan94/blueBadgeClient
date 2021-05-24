@@ -55,7 +55,7 @@ const Register = (props) => {
                         <h3> Create an Account </h3>
                     </ModalHeader>
                     <ModalBody>
-                        {!error ? <FormFeedback invalid>User name or email already in use!</FormFeedback> : null}
+                        {error ? <FormFeedback invalid>User name or email already in use!</FormFeedback> : null}
                         <FormText>Enter Email</FormText>
                         <Input type="email" aria-label="email" placeholder="example@example.com"
                             required
