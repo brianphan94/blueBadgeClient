@@ -1,0 +1,35 @@
+.gameColumn{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width:fit-content;
+    padding: 20px;
+
+    h2{
+        color: white;
+        letter-spacing: 1px;
+        border-bottom: 2px solid white;
+        padding: 10px;
+    }
+
+    img{
+        display: flex;
+        margin: auto;
+        box-shadow: 2px 2px 3px black;
+        padding: 0px;    
+    }
+
+    button{
+        margin-top: 10px;
+        color:white; 
+        box-shadow: 2px 2px 3px black;
+        font-size: large;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px black;
+
+        &:hover{
+            color: white; 
+        }
+    }
+   
+}
