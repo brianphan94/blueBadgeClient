@@ -5,6 +5,7 @@ import {Col, Form, Input, Button, Label, FormGroup} from 'reactstrap'
 const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+   
 
     let auth = (e) => {
         e.preventDefault()
@@ -25,6 +26,8 @@ const Login = (props) => {
         .then(json => {
             props.updateToken(json.token)
             console.log(json.token)
+            console.log(json.user.username)
+           
            
         })
         .catch(err => {

@@ -1,9 +1,7 @@
 import './register.scss'
 
-import { useState } from 'react'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Button, Input, FormText, FormFeedback } from 'reactstrap'
-
-
+import { useEffect, useState } from 'react'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Button, Input, FormText, Alert } from 'reactstrap'
 
 const Register = (props) => {
     const [email, setEmail] = useState('')
@@ -12,11 +10,17 @@ const Register = (props) => {
     const [error, setError] = useState(false)
     const [modal, setModal] = useState(false)
 
-    const toggle = () => setModal(!modal)
+    useEffect(() => {
+        setError(false)
+        setEmail('')
+        setUsername('')
+        setPassword('')
+    }, [modal])
+
+    const toggle = () => {
+        setModal(!modal)
+    }
     const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
-
-
-
 
     let authTwo = (e) => {
         e.preventDefault()
@@ -35,27 +39,31 @@ const Register = (props) => {
         }).then(res => res.json())
             .then(json => {
                 props.updateToken(json.token)
-                //console.log(json.user)
-            }).catch(err => {
-                setError(true)
+
+
+                if (!props.token) {
+                    setError(true)
+                   
+
+                }
+            })
+            .catch(err => {
                 console.log(err)
             })
+
     }
-
-
-
 
 
     return (
         <div className="modalDiv">
             <button onClick={toggle}>Don't have an account? Sign up here!</button>
-            <Modal className="modalBox" isOpen={modal} toggle={toggle}>
+            <Modal className="modalBox" isOpen={modal}>
                 <Form className="modalForm" onSubmit={authTwo}>
                     <ModalHeader toggle={toggle} close={closeBtn}>
                         <h3> Create an Account </h3>
                     </ModalHeader>
                     <ModalBody>
-                        {error ? <FormFeedback invalid>User name or email already in use!</FormFeedback> : null}
+                        {error ? <Alert color="danger">Username or email already exist</Alert> : null}
                         <FormText>Enter Email</FormText>
                         <Input type="email" aria-label="email" placeholder="example@example.com"
                             required
@@ -65,28 +73,17 @@ const Register = (props) => {
                         <FormText>Enter Username</FormText>
                         <Input type="text" aria-label="username" placeholder="Make it cool!"
                             value={username} onChange={(e) => { setUsername(e.target.value) }}></Input>
-
-                            
-
                         <FormText>Enter Password (5 or more characters, please!)</FormText>
                         <Input type="password" aria-label="password"
                             required minLength="5"
-                            placeholer="Password" value={password} onChange={(e) => { setPassword(e.target.value) }}
-                        >
+                            placeholer="Password" value={password} onChange={(e) => { setPassword(e.target.value) }}>
                         </Input>
                     </ModalBody>
                     <ModalFooter>
                         <Button type="submit" color="warning">Sign Up</Button>
                     </ModalFooter>
-
                 </Form>
-
             </Modal>
-
-
-
-
-
         </div>
     )
 

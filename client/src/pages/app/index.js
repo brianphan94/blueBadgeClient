@@ -6,8 +6,6 @@ import Auth from '../landing/auth/'
 import Header from '../../components/header'
 import Sidebar from '../../components/home-page-sidebar'
 
-
-
 function App() {
   const [token, setSessionToken] = useState('')
 
@@ -31,8 +29,6 @@ function App() {
   const protectedViews = () => {
     return(token === localStorage.getItem('token') ? <Sidebar token={token} clickLogout={clearToken}/>: <Auth updateToken={updateToken} />)
   }
-
-  
 
   return (
     <div className="App">

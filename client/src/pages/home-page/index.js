@@ -6,7 +6,7 @@ import { Card, Container } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 
-const Home = (props) => {
+const Home = ({token}) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -15,7 +15,7 @@ const Home = (props) => {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': token
             })
         }).then((res) => res.json())
             .then((data) => {
@@ -25,6 +25,7 @@ const Home = (props) => {
                 console.log("hit: ", err)
             })
     }
+
 
     useEffect(() => {
         everyPost()
