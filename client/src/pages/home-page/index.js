@@ -6,7 +6,7 @@ import { Card, Container } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 
-const Home = ({token}) => {
+const Home = ({token, userTitle}) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -35,7 +35,7 @@ const Home = ({token}) => {
     return (
         <Container>
             <div className='review-feed-box'>
-            <h1>Welcome</h1>
+            <h1>Welcome {userTitle}</h1>
             <Card>
                 {reviews.length > 0 ? (
                     reviews.map((review) => (

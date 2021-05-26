@@ -12,12 +12,12 @@ const Auth = (props) => {
     return(
         <div>
             <div>
-                <Login  updateToken={props.updateToken}/>
+                <Login  setUserTitle={props.setUserTitle} updateToken={props.updateToken}/>
                
                 
             </div>
             <div>
-                <Register updateToken={props.updateToken} />
+                <Register setUserTitle={props.setUserTitle} updateToken={props.updateToken} />
             </div>
         </div>
     )
