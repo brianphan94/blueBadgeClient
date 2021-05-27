@@ -1,0 +1,20 @@
+.homeContent {
+    padding: 20px;
+}
+
+.users {
+    display: flex;
+    align-content: center;
+    border: 5px solid black;
+    height: 60vh;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.username {
+    color: blue;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    
+}

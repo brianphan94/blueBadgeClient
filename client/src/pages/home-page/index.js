@@ -42,10 +42,10 @@ const Home = ({token}) => {
                         <li key={review.id} className='review'>
                             <h2>{review.reviewTitle}</h2>
                             <p className='review-body'>{review.reviewBody}</p>
-                            <div className='review-footer'>
-                                <img className='userlogo' src={UserLogo} alt="user logo" />
-                                <p>Review by: {review.username}</p>
-                            </div>
+                        <div className='review-footer'>
+                            <img className='userlogo' src={UserLogo} alt="user logo" />
+                            <p>Review by: {review.username}</p>
+                        </div>
                             
                         </li>
                     ))

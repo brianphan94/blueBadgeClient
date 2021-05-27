@@ -8,19 +8,16 @@ import GameCard from '../GameCard/gameReview'
 
 import './sidebar.scss'
 
-
-
-
 const Sidebar = (props) => {
 
     const [gameName, setGameName] = useState('')
     const [gamePic, setGamePic] = useState()
 
+
     return (
         <div className="header">
             <Container fluid='lg' className="sideBarDiv">
-
-                <Nav horizontal>
+                <Nav className='container' horizontal>
                     <NavItem>
                         <h1 className='toggler'>Btn.Mash</h1>
                     </NavItem>
