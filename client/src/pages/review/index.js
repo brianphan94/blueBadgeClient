@@ -1,12 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { values } from 'sequelize/types/lib/operators';
 
-function Review() {
+// const [username, setUsername] = useState(''); 
+// const  [reviewtitle, setReviewtitle] = useState('');
+// const [reviewbody, setReviewbody] = useState(''); 
 
-  const [values, setValues] = useState({
+const [values, setValues] = useState({
     username: "",
-    reviewtitle: "",
-    reviewbody: "", 
+    lastname: "",
+    email: "", 
 }); 
 
 const handleFirstNameInputChange = (event) => {
@@ -18,28 +21,30 @@ const handleReviewTitleInputChange = (event) => {
 }
 
 const handleReviewBodyInputChange = (event) => {
-    setValues({...values, reviewbody: event.target.value })
+    setValues({...values, reviewtitle: event.target.value })
 }
 
 const handleSubmitForm = (event) => {
-    event.preventDefault();
+    event.preventDefualt();
     fetch('http://localhost:4040/review/post', {
         method: 'POST',
         headers: new Headers({
-            'Content-Type': "application/json"
+            'Content-Type': "application/jason"
         }),
         body: JSON.stringify({
             review: {
-                username: values.username,
-                reviewTitle: values.reviewtitle, 
-                reviewBody: values.reviewbody
+                username: username,
+                reviewTitle: reviewtitle, 
+                reviewBody: reviewbody
             }
         })
         .then(res => res.json())
-        .then(json => {console.log(json)})
-        .catch(err => console.log(err))      
+        .then(json => {json.reviewbody})
     })
+
 }
+
+function Review() {
     return (
         <div>
             <h1>Reviews</h1>
@@ -53,7 +58,6 @@ const handleSubmitForm = (event) => {
                     id="username"  
                     placeholder="user name"
                 />
-                {console.log(values.username)}
                 
                 <p>Review title:</p>
                 <input
@@ -64,7 +68,6 @@ const handleSubmitForm = (event) => {
                     id="reviewtitle" 
                     placeholder="review title" 
                 />
-                {console.log(values.reviewtitle)}
 
                 <p>Write your review:</p>
                 <input
@@ -75,9 +78,8 @@ const handleSubmitForm = (event) => {
                     id="reviewbody" 
                     placeholder="Write a review" 
                 />
-                {console.log(values.reviewbody)}
 
-                <button type="submit" name="reviewsubmit" id="reviewsubmit">Post Review</button>
+                <button name="reviewsubmit" id="reviewsubmit">Post Review</button>
             </form>
         </div>
     );
