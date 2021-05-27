@@ -1,0 +1,56 @@
+ 
+h1{
+    color: white
+}
+ 
+.review-feed-box {
+    padding:20px;
+    background-color: rgba(243, 245, 250, 0.221);
+}
+ 
+.card{
+    background-color: rgba(243, 245, 250, 0) !important;
+    border: none !important;
+}
+ 
+.review {
+    //border: 2px solid black;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.842);
+    box-shadow: 5px 5px 10px black;
+    color: black;
+}
+ 
+.review-body {
+    border: 1px solid grey;
+    margin: 20px;
+    padding: 10px;
+}
+ 
+.review-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+ 
+.userlogo {
+    width: 40px;
+    border: 1px solid black;
+    border-radius: 5em;
+    background-color: grey;
+}
+ 
+ 
+    
+    .homeContent {
+        
+        box-shadow: 8px 0px 5px black;
+        background-color: rgba(243, 245, 250, 0.221);
+        height: 70vh;
+    }
+ 
+    h1 {
+        color: white;
+        margin-top: 10px;
+    }

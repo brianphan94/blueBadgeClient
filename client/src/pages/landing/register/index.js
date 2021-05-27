@@ -1,0 +1,93 @@
+import './register.scss'
+ 
+import { useEffect, useState } from 'react'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Button, Input, FormText, Alert } from 'reactstrap'
+ 
+const Register = (props) => {
+    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState(false)
+    const [modal, setModal] = useState(false)
+ 
+    useEffect(() => {
+        setError(false)
+        setEmail('')
+        setUsername('')
+        setPassword('')
+    }, [modal])
+ 
+    const toggle = () => {
+        setModal(!modal)
+    }
+    const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
+ 
+    let authTwo = (e) => {
+        e.preventDefault()
+        fetch('http://localhost:4040/user/register', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                user: {
+                    email: email,
+                    username: username,
+                    password: password
+                }
+            })
+        }).then(res => res.json())
+            .then(json => {
+                props.updateToken(json.token)
+ 
+ 
+                if (!props.token) {
+                    setError(true)
+                   
+ 
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+ 
+    }
+ 
+ 
+    return (
+        <div className="modalDiv">
+            <button onClick={toggle}>Don't have an account? Sign up here!</button>
+            <Modal className="modalBox" isOpen={modal}>
+                <Form className="modalForm" onSubmit={authTwo}>
+                    <ModalHeader toggle={toggle} close={closeBtn}>
+                        <h3> Create an Account </h3>
+                    </ModalHeader>
+                    <ModalBody>
+                        {error ? <Alert color="danger">Username or email already exist</Alert> : null}
+                        <FormText>Enter Email</FormText>
+                        <Input type="email" aria-label="email" placeholder="example@example.com"
+                            required
+                            value={email}
+                            onChange={(e) => { setEmail(e.target.value) }}>
+                        </Input>
+                        <FormText>Enter Username</FormText>
+                        <Input type="text" aria-label="username" placeholder="Make it cool!"
+                            value={username} onChange={(e) => { setUsername(e.target.value) }}></Input>
+                        <FormText>Enter Password (5 or more characters, please!)</FormText>
+                        <Input type="password" aria-label="password"
+                            required minLength="5"
+                            placeholer="Password" value={password} onChange={(e) => { setPassword(e.target.value) }}>
+                        </Input>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button type="submit" color="warning">Sign Up</Button>
+                    </ModalFooter>
+                </Form>
+            </Modal>
+        </div>
+    )
+ 
+}
+ 
+export default Register
+
