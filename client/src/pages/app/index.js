@@ -8,12 +8,18 @@ import Sidebar from '../../components/home-page-sidebar'
 
 function App() {
   const [token, setSessionToken] = useState('')
+  const [userTitle, setUserTitle] = useState('')
 
   useEffect(() => {
-    if (localStorage.getItem('token')){
+    if (localStorage.getItem('token','Username')){
       setSessionToken(localStorage.getItem('token'))
+      setUserTitle(localStorage.getItem('Username'))  
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("Username", userTitle)
+  },[userTitle])
 
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
@@ -27,13 +33,14 @@ function App() {
   }
 
   const protectedViews = () => {
-    return(token === localStorage.getItem('token') ? <Sidebar token={token} clickLogout={clearToken}/>: <Auth updateToken={updateToken} />)
+    return(token === localStorage.getItem('token') ? <Sidebar token={token} userTitle={userTitle} clickLogout={clearToken}/>: <Auth setUserTitle={setUserTitle} updateToken={updateToken} />)
   }
 
   return (
     <div className="App">
       <Header />
       {protectedViews()}
+      
   
     </div>
   );

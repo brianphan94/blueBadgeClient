@@ -38,6 +38,7 @@ const Register = (props) => {
             })
         }).then(res => res.json())
             .then(json => {
+                props.setUserTitle(json.user.username)
                 props.updateToken(json.token)
 
 

@@ -1,12 +1,14 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-import {Col, Form, Input, Button, Label, FormGroup} from 'reactstrap'
+import {Col, Form, Input, Button, Label, FormGroup, Alert} from 'reactstrap'
 
 const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-   
-
+    const [error, setError] = useState(false)
+  
+    
+    
     let auth = (e) => {
         e.preventDefault()
         fetch('http://localhost:4040/user/login', {
@@ -24,21 +26,27 @@ const Login = (props) => {
         })
         .then(res => res.json())
         .then(json => {
+            props.setUserTitle(json.user.username)
             props.updateToken(json.token)
             console.log(json.token)
-            console.log(json.user.username)
-           
-           
+            console.log(json.user.username)    
+            
         })
         .catch(err => {
+            setError(true)
             console.log(err)
         })
     }
+
+   
+
     
     return(
         <Form onSubmit={auth}>
             <FormGroup>
             <Col md={12} className="email">
+            {error ? <Alert color="danger">Email or password is incorrect!</Alert>:null}
+            {error && !email && !password ? setError(false) : null}
             <Label> Email</Label> 
             <Input type="email" aria-label="email" placeholder="example@example.com"
             value={email}
