@@ -11,10 +11,15 @@ function App() {
   const [userTitle, setUserTitle] = useState('')
 
   useEffect(() => {
-    if (localStorage.getItem('token')){
+    if (localStorage.getItem('token','Username')){
       setSessionToken(localStorage.getItem('token'))
+      setUserTitle(localStorage.getItem('Username'))  
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("Username", userTitle)
+  },[userTitle])
 
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
@@ -35,6 +40,7 @@ function App() {
     <div className="App">
       <Header />
       {protectedViews()}
+      
   
     </div>
   );

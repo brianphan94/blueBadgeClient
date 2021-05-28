@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import {Col, Form, Input, Button, Label, FormGroup, Alert} from 'reactstrap'
 
@@ -29,10 +29,7 @@ const Login = (props) => {
             props.setUserTitle(json.user.username)
             props.updateToken(json.token)
             console.log(json.token)
-            console.log(json.user.username)
-            
-           
-            
+            console.log(json.user.username)    
             
         })
         .catch(err => {
@@ -40,6 +37,9 @@ const Login = (props) => {
             console.log(err)
         })
     }
+
+   
+
     
     return(
         <Form onSubmit={auth}>

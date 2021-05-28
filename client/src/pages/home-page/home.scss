@@ -3,18 +3,20 @@ h1{
     color: white
 }
 
-.review-feed-box {
-    padding:20px;
-    background-color: rgba(243, 245, 250, 0.221);
+.review-feed-box { 
+    padding:20px;  
 }
 
 .card{
+    display: flex;
+    flex-direction: column-reverse !important;
     background-color: rgba(243, 245, 250, 0) !important;
     border: none !important;
+    
 }
 
 .review {
-    //border: 2px solid black;
+    
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.842);
     box-shadow: 5px 5px 10px black;
@@ -53,6 +55,9 @@ h1{
     h1 {
         color: white;
         margin-top: 10px;
+        text-shadow: 2px 2px 2px black;
+        letter-spacing: 2px;
+        flex-direction: row;
     }
 
 
