@@ -28,10 +28,10 @@ const Profile = (props) => {
         <Input placeholder ='Search for a user' value={search} onChange={(e) => setSearch(e.target.value)}/>
         <Button type='text' color="warning" onClick={searchUsers}>Search</Button>
             {Object.keys(user).map(key => {
-                {console.log(key)}
+                {console.log(user[key])}
                 <div className='user-container'>
                     <div className='user-info'>
-                        <p>{key}</p>
+                        
                         <img className='user-picture' src={UserLogo} alt="user logo" />
                     </div>
                     {/* {user[key].map(review => {
