@@ -44,7 +44,7 @@ const Home = ({token}) => {
                             <p className='review-body'>{review.reviewBody}</p>
                         <div className='review-footer'>
                             <img className='userlogo' src={UserLogo} alt="user logo" />
-                            <p>Review by: {review.username}</p>
+                            <p>Review by: <span className='home-username'>{review.username}</span></p>
                         </div>
                             
                         </li>

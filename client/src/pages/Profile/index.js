@@ -2,6 +2,8 @@ import './profile.scss';
 import { useState, useEffect } from 'react';
 import { Card, Container, Input, Button } from "reactstrap";
 
+import UserLogo from '../../userlogo.svg';
+
 const Profile = (props) => {
 
     const [search, setSearch] = useState()
@@ -18,33 +20,32 @@ const Profile = (props) => {
                     'Authorization': auth
              }) 
             }).then((res) => res.json())
-            .then((data) => getUser(data.reviews))
+            .then((data) => getUser(data.userList))
         }
 
     return(
-        <Container className="homeContent"><h1>Profile Page</h1>
-        <Input placeholder ='Search for a user' value={search} onChange={(e) => setSearch(e.target.value)} />
+        <Container fluid className="homeContent"><h1>Profile Page</h1>
+        <Input placeholder ='Search for a user' value={search} onChange={(e) => setSearch(e.target.value)}/>
         <Button type='text' color="warning" onClick={searchUsers}>Search</Button>
-        <Card>
-            {user.map((user) => (
-                <h2>{user.username}</h2>
-            ))}
-        </Card>
-        {/* <Card>
-            {reviews.length > 0 ? (
-                reviews.map((review) => (
-                    <div key={review.id} className='reviews'>
-                        <div>
-                            <h2 className='username'>{review.username}</h2>
-                        </div>
-                        <div>
-                            <h3 className='review-title'>{review.reviewTitle}</h3>
-                            <h4 className='review-body'>{review.reviewBody}</h4>
-                        </div>
+            {Object.keys(user).map(key => {
+                {console.log(key)}
+                <div className='user-container'>
+                    <div className='user-info'>
+                        <p>{key}</p>
+                        <img className='user-picture' src={UserLogo} alt="user logo" />
                     </div>
-                ))
-            ) : null}
-        </Card> */}
+                    {/* {user[key].map(review => {
+                       <Card>
+                        <div className='review-info'>
+                            <p className='review-title'>{review.reviewTitle}</p>
+                            <p className='review-body'>{review.reviewBody}</p>
+                            <p>{review.createdAt}</p>
+                        </div>
+                    </Card> 
+                    })} */}
+                    
+                </div>
+            })}
         </Container>
     )
 }
