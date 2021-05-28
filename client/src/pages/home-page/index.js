@@ -50,6 +50,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
     return (
         <Container className="homeContent">
             <div className='review-feed-box'>
+
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
                 <Card>
                     {reviews?.length > 0 ? (
@@ -70,6 +71,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                     )}
                 </Card>
             </div>
+
             {/* <Button onClick={props.clickLogout}>Logout</Button> */}
         </Container>
     )

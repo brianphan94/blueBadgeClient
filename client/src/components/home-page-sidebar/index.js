@@ -37,6 +37,7 @@ const Sidebar = (props) => {
 
     
 
+
    
     return (
         <div className="header">
@@ -50,6 +51,7 @@ const Sidebar = (props) => {
                             <NavItem>
                                 <Link to="/home">Home</Link>
                             </NavItem>
+
 
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
