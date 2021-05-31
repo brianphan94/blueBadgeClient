@@ -10,7 +10,6 @@ const Home = ({ token, userTitle, setGameReviews }) => {
 
     const [reviews, getReviews] = useState([])
 
-
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
             method: 'GET',
@@ -36,6 +35,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
     return (
         <Container className="homeContent">
             <div className='review-feed-box'>
+
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
                 <Card>
                     {reviews?.length > 0 ? (
@@ -56,6 +56,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                     )}
                 </Card>
             </div>
+
         </Container>
     )
 }

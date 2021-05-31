@@ -35,6 +35,7 @@ const Sidebar = (props) => {
 
     const toggleNavbar = () => setCollapsed(!collapsed)
 
+
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
             method: 'GET',
@@ -54,6 +55,7 @@ const Sidebar = (props) => {
        everyPost()
      
    },[])
+
    
     return (
         <div className="header">
@@ -67,6 +69,7 @@ const Sidebar = (props) => {
                             <NavItem>
                                 <Link to="/home">Home</Link>
                             </NavItem>
+
 
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
