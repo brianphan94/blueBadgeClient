@@ -42,14 +42,12 @@ const Register = (props) => {
                 props.updateToken(json.token)
 
 
-                if (!props.token) {
-                    setError(true)
-                   
-
-                }
             })
             .catch(err => {
                 console.log(err)
+                if (!props.token) {
+                    setError(true)
+                }
             })
 
     }

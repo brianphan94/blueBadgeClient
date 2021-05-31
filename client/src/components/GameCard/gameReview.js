@@ -68,10 +68,8 @@ const GameCard = (props) => {
                                 <hr />
                                 <div className='review-footer'>
 
-
-                                    <CardSubtitle tag="h6" className="text-muted">Review by: {review?.game?.username}</CardSubtitle>
+                                   {review?.game?.username === props.userTitle ? <CardSubtitle tag="h6" className="text-danger"> Review by: You</CardSubtitle> : <CardSubtitle tag="h6" className="text-muted">Review by: {review?.game?.username}</CardSubtitle>}
                                 </div>
-
                             </li>
                         ))
                     ) : (

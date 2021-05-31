@@ -11,7 +11,7 @@ const Twitch = ({ setGameName, setGamePic }) => {
 
     const history = useHistory()
 
-    const [games, getGames] = useState([])
+    const [games, setGames] = useState([])
     const [prevUrl, setPrevUrl] = useState('')
     const [nextUrl, setNextUrl] = useState('')
     const [search, setSearch] = useState('')
@@ -26,7 +26,7 @@ const Twitch = ({ setGameName, setGamePic }) => {
             })
         })
         const json = await res.json()
-        getGames(json.results)
+        setGames(json.results)
         setNextUrl(json.next)
         setPrevUrl(json.previous)
     }
@@ -40,7 +40,7 @@ const Twitch = ({ setGameName, setGamePic }) => {
                 })
             })
             const json = await res.json()
-            getGames(json.results)
+            setGames(json.results)
             setNextUrl(json.next)
             setPrevUrl(json.previous)
 
@@ -56,7 +56,7 @@ const Twitch = ({ setGameName, setGamePic }) => {
                 })
             })
             const json = await res.json()
-            getGames(json.results)
+            setGames(json.results)
             setPrevUrl(json.previous)
 
         }
@@ -71,26 +71,25 @@ const Twitch = ({ setGameName, setGamePic }) => {
             })
         })
         const json = await res.json()
-        getGames(json.results)
+        setGames(json.results)
         setNextUrl(json.next)
     }
 
     useEffect(() => {
         TwitchAPI()
-
-
     }, [])
 
     return (
         <div>
             <Container fluid="md" className="gameContent">
-                <h1>Search and Review Games!</h1>
+                <h4>Search and Review Games!</h4>
+                <hr />
                 {nextUrl === null ? <Button color="warning" className="next" onClick={TwitchAPI}>Back</Button> : <Button color="warning" className="next" onClick={nextPage} >Next</Button>}
                 {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={prevPage}>Previous</Button>}
                 <InputGroup className="inputGroup">
                     <Input value={search} onChange={(e) => setSearch(e.target.value)} />
                     <InputGroupAddon addonType="append">
-                        <Button type='text' color="warning" onClick={searchInput}>Search</Button>
+                        <Button className="searchButton" type='text' color="warning" onClick={searchInput}>Search</Button>
                     </InputGroupAddon>
                 </InputGroup>
 

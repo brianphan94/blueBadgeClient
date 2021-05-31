@@ -5,8 +5,13 @@
     background-color: rgba(243, 245, 250, 0.221);
     height: 70vh;
 
-    h1 {
-        margin-top: 1%;
+    h4 {
+        margin-top: 2%;
+        font-family: 'Press Start 2P';
+        padding-bottom: 1%;
+        text-shadow: 2px 2px 3px black;
+        color:white;
+        letter-spacing: 1px;
     }
     .inputGroup {
         position: sticky;
@@ -14,6 +19,19 @@
         z-index: 1;
         margin: 10px;
         padding: 20px;
+    }
+
+    .searchButton{
+        color: white;
+        font-size: larger;
+        font-weight: bold;
+        
+
+        &:hover{
+            color: white; 
+            transform: scale(1.02);
+            box-shadow: 1px 1px 2px black;
+        }
     }
 
     .gameCard {
