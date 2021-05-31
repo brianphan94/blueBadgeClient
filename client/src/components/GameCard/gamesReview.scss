@@ -1,39 +1,113 @@
-.gameColumn{
+.homeContent {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+}
+
+.gameColumn {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    float: left;
+    flex-wrap: wrap;
     margin: auto;
-    width:fit-content;
     padding: 20px;
 
-    h2{
+    h2 {
         color: white;
         letter-spacing: 1px;
         border-bottom: 2px solid white;
         padding: 10px;
     }
 
-    img{
-        display: flex;
+    img {
         margin: auto;
         box-shadow: 2px 2px 3px black;
-        padding: 0px;    
+        padding: 0px;
+        width: 100%;
     }
 
-    button{
+    button {
         margin-top: 10px;
-        color:white; 
+        color: white;
         font-size: large;
         font-weight: bold;
         text-shadow: 1px 1px 1px black;
-        
-        &:hover{
-            color: white; 
+
+        &:hover {
+            color: white;
             box-shadow: 2px 2px 3px black;
         }
     }
-   
 }
 
-.gameReview{
+.gameReview {
     background-color: rgba(255, 255, 255, 0.918);
+
+}
+.noReviews{
+    font-weight: normal;
+    text-shadow: 2px 2px 1px black;
+    flex-wrap: wrap;
+    color:rgba(255, 255, 255, 0.835);
+    letter-spacing: 2px;
+    padding: 2px;
+    margin: auto;
+}
+
+.reviewsHeader {
+    color: white;
+    letter-spacing: 2px;
+    font-size: larger;
+    text-shadow: 2px 2px 1px black;
+}
+
+.reviewColumn {
+    box-shadow: 8px 0px 5px black;
+    background-color: rgba(243, 245, 250, 0.221);
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 20px;
+    overflow: scroll;
+    height: 60vh;
+
+    .review {
+        width: 100%;
+        padding: 10px;
+        margin: auto;
+        margin-bottom: 12px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.863);
+
+        h3 {
+            font-weight: normal;
+            flex-wrap: wrap;
+            color: #ffbc04b6;
+            letter-spacing: 2px;
+            box-shadow: 2px 2px 2px black;
+            padding: 2px;
+            margin: auto;
+        }
+
+        h5 {
+            text-align: left;
+            margin-left: 50px;
+            letter-spacing: 1px;
+        }
+
+        .review-body {
+            overflow: scroll;
+            flex-wrap: wrap;
+            height: 100px;
+            margin-top: 8px;
+            margin-left: 50px;
+            margin-right: 50px;
+            border: 3px solid #ffbc046c;
+            box-shadow: 2px 2px 3px black;
+            text-align: left;
+        }
+    }
 }

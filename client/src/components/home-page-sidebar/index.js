@@ -35,8 +35,25 @@ const Sidebar = (props) => {
 
     const toggleNavbar = () => setCollapsed(!collapsed)
 
-    
+    const everyPost = () => {
+        fetch(`http://localhost:4040/review/all`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        }).then((res) => res.json())
+            .then((data) => {
+                setGameReviews(data.review)                
+            }).catch(err => {
+                console.log("hit: ", err)
+            })
+    }
 
+   useEffect(() => {
+       everyPost()
+     
+   },[])
    
     return (
         <div className="header">

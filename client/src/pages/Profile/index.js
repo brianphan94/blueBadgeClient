@@ -2,7 +2,7 @@ import { Container } from "reactstrap"
 
 const Profile = (props) => {
     return(
-        <Container className="homeContent"><h1>Profile Page</h1></Container>
+        <Container className="gameContent"><h1>Profile Page</h1></Container>
     )
 }
 

@@ -1,8 +1,11 @@
-.homeContent {
+.gameContent {
     overflow: scroll;
+    display: block !important;
+    box-shadow: 8px 0px 5px black;
+    background-color: rgba(243, 245, 250, 0.221);
+    height: 70vh;
 
-
-    h1{
+    h1 {
         margin-top: 1%;
     }
     .inputGroup {
@@ -13,10 +16,10 @@
         padding: 20px;
     }
 
-    .gameCard{
-        &:hover{
+    .gameCard {
+        &:hover {
             transform: scale(1.02);
-            cursor:pointer;
+            cursor: pointer;
         }
     }
 
@@ -37,7 +40,7 @@
             box-shadow: 2px 2px 3px black;
         }
 
-        &:focus{
+        &:focus {
             color: white;
         }
     }

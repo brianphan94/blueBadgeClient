@@ -10,16 +10,6 @@ const Home = ({ token, userTitle, setGameReviews }) => {
 
     const [reviews, getReviews] = useState([])
 
-    useEffect(() => {
-        if (localStorage.getItem("reviews")) {
-            let retrieved = localStorage.getItem('reviews')
-            getReviews(JSON.parse(retrieved))
-        }
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem('reviews', JSON.stringify(reviews))
-    }, [reviews])
 
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
@@ -30,11 +20,8 @@ const Home = ({ token, userTitle, setGameReviews }) => {
             })
         }).then((res) => res.json())
             .then((data) => {
-                getReviews(data.review)
                 setGameReviews(data.review)
-               
-                
-                console.log(data.review)
+                getReviews(data.review)
             }).catch(err => {
                 console.log("hit: ", err)
             })
@@ -42,7 +29,6 @@ const Home = ({ token, userTitle, setGameReviews }) => {
 
     useEffect(() => {
         everyPost()
-
     }, [])
 
 
@@ -53,7 +39,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
                 <Card>
                     {reviews?.length > 0 ? (
-                        reviews?.reverse().map((review) => (
+                        reviews?.map((review) => (
                             <li key={review?.id} className='review'>
                                 <h2>{review?.reviewTitle}</h2>
                                 <h4>{review?.subReviewTitle}</h4>
@@ -70,7 +56,6 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                     )}
                 </Card>
             </div>
-            {/* <Button onClick={props.clickLogout}>Logout</Button> */}
         </Container>
     )
 }
