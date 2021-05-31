@@ -6,7 +6,7 @@ import UserLogo from '../../userlogo.svg';
 
 const Profile = (props) => {
 
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState('')
     //const [user, getUser] = useState([])
     let user = []
     
@@ -24,15 +24,22 @@ const Profile = (props) => {
             }
 
             return(
-                <Card className="reviewCard" >
+                <div className="user-container">
+                    <div className="user-info">
+                     <img className='user-picture' src={UserLogo} alt="user logo" />
+                     </div>
+                <Card >
+                <div className="review-info">
                     {user.length > 0 ? (
                         user.map((review) => (
                             <li key={Math.random().toString(36).substr(2, 9)} className='review'>
-                                <CardTitle tag="h3">{review?.gameReview.reviewTitle}</CardTitle>
+                                <p className="review-title" tag="h3">{review?.gameReview.reviewTitle}</p>
                                 <hr />
-                                <CardSubtitle tag="h5" className="text-muted">{review?.gameReview?.subReviewTitle}</CardSubtitle>
+                                <p className='review-title' tag="h5" className="text-muted">{review?.gameReview?.subReviewTitle}</p>
 
                                 <p className='review-body'>{review?.gameReview?.reviewBody}</p>
+
+                                <p>{review?.gameReview?.createdAt}</p>
                                 <hr />
                                 <div className='review-footer'>
 
@@ -42,10 +49,12 @@ const Profile = (props) => {
 
                             </li>
                         ))
-                    ) : (
-                        <h3 className="noReviews">No Reviews by this user!</h3>
-                    )}
+                        ) : (
+                            <h3 className="noReviews">No Reviews by this user!</h3>
+                            )}
+                            </div>
                 </Card>
+                </div>
             )
 
            // let auth = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIxOTc5OTcxLCJleHAiOjE2MjIwNjYzNzF9.HKW1lorM4QIpCDXi0BZhLL_HB4hG3NtANFk34t0xYlU'
