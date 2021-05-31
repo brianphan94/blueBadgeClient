@@ -14,15 +14,14 @@ const Sidebar = (props) => {
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
-   
+
 
     useEffect(() => {
-        if(localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')){
+        if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
-
-           let retrieved = localStorage.getItem('Game Reviews')
-           setGameReviews(JSON.parse(retrieved))
+            let retrieved = localStorage.getItem('Game Reviews')
+            setGameReviews(JSON.parse(retrieved))
         }
     }, [])
 
@@ -31,7 +30,7 @@ const Sidebar = (props) => {
         localStorage.setItem('Game Name', gameName)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
     }, [gamePic, gameName, gameReviews])
-    
+
 
     const toggleNavbar = () => setCollapsed(!collapsed)
 
@@ -45,18 +44,18 @@ const Sidebar = (props) => {
             })
         }).then((res) => res.json())
             .then((data) => {
-                setGameReviews(data.review)                
+                setGameReviews(data.review)
             }).catch(err => {
                 console.log("hit: ", err)
             })
     }
 
-   useEffect(() => {
-       everyPost()
-     
-   },[])
+    useEffect(() => {
+        everyPost()
 
-   
+    }, [])
+
+
     return (
         <div className="header">
             <Container fluid='lg' className="sideBarDiv">
@@ -65,7 +64,7 @@ const Sidebar = (props) => {
                 <Col md={12}>
                     <Collapse isOpen={!collapsed}>
                         <Nav>
-                           
+
                             <NavItem>
                                 <Link to="/home">Home</Link>
                             </NavItem>
@@ -92,7 +91,7 @@ const Sidebar = (props) => {
                         <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} />
                     </Route>
                     <Route exact path="/profile" >
-                        <Profile token={props.token} />
+                        <Profile token={props.token} gameReviews={gameReviews} />
                     </Route>
                     <Route exact path="/games">
                         <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} />
