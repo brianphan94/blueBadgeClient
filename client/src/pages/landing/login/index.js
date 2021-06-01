@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 import {Col, Form, Input, Button, Label, FormGroup, Alert} from 'reactstrap'
 

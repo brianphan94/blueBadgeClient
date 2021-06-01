@@ -7,16 +7,14 @@ import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, Ca
 
 import './twitch.scss'
 
-const Twitch = ({setGameName, setGamePic}) => {
+const Twitch = ({ setGameName, setGamePic }) => {
 
     const history = useHistory()
 
-    const [games, getGames] = useState([])
+    const [games, setGames] = useState([])
     const [prevUrl, setPrevUrl] = useState('')
     const [nextUrl, setNextUrl] = useState('')
     const [search, setSearch] = useState('')
-    
-
 
     let TwitchAPI = async () => {
         let url = "https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&page_size=12&ordering=-released,rating"
@@ -28,12 +26,10 @@ const Twitch = ({setGameName, setGamePic}) => {
             })
         })
         const json = await res.json()
-        getGames(json.results)
+        setGames(json.results)
         setNextUrl(json.next)
         setPrevUrl(json.previous)
-        console.log(json.results)
-        
-    } 
+    }
 
     const nextPage = async () => {
         if (nextUrl) {
@@ -44,9 +40,10 @@ const Twitch = ({setGameName, setGamePic}) => {
                 })
             })
             const json = await res.json()
-            getGames(json.results)
+            setGames(json.results)
             setNextUrl(json.next)
             setPrevUrl(json.previous)
+
         }
     }
 
@@ -59,11 +56,12 @@ const Twitch = ({setGameName, setGamePic}) => {
                 })
             })
             const json = await res.json()
-            getGames(json.results)
+            setGames(json.results)
             setPrevUrl(json.previous)
+
         }
     }
-    
+
     const searchInput = async () => {
         let searchUrl = `https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&ordering=-released,rating&search=${search}&search_exact`
         const res = await fetch(searchUrl, {
@@ -73,37 +71,33 @@ const Twitch = ({setGameName, setGamePic}) => {
             })
         })
         const json = await res.json()
-        getGames(json.results)
+        setGames(json.results)
         setNextUrl(json.next)
     }
-    
+
     useEffect(() => {
         TwitchAPI()
-
     }, [])
-
 
     return (
         <div>
-            <Container fluid="md" className="homeContent">
-                <h1>Search and Review Games!</h1>
+            <Container fluid="md" className="gameContent">
+                <h4>Search and Review Games!</h4>
+                <hr />
                 {nextUrl === null ? <Button color="warning" className="next" onClick={TwitchAPI}>Back</Button> : <Button color="warning" className="next" onClick={nextPage} >Next</Button>}
                 {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={prevPage}>Previous</Button>}
                 <InputGroup className="inputGroup">
                     <Input value={search} onChange={(e) => setSearch(e.target.value)} />
                     <InputGroupAddon addonType="append">
-                        <Button type='text' color="warning" onClick={searchInput}>Search</Button>
+                        <Button className="searchButton" type='text' color="warning" onClick={searchInput}>Search</Button>
                     </InputGroupAddon>
                 </InputGroup>
 
-
-
-
                 {games.length > 0 ? (
                     games.map(game => (
-                        <div  key={game.id}>
+                        <div key={game.id}>
                             {game.background_image ? <Col className="games" sm="4">
-                                <Card className="gameCard" onClick={() => {history.push(`/games/${game.name}`); setGameName(game.name); setGamePic(game.background_image)}}>
+                                <Card className="gameCard" onClick={() => { history.push(`/games/${game.name}`); setGameName(game.name); setGamePic(game.background_image) }}>
                                     <CardBody>
                                         <CardTitle>{game.name}</CardTitle>
                                         <CardSubtitle className="mb-2 text-muted">Released: {game.released}</CardSubtitle>

@@ -1,26 +1,27 @@
-
-h1{
-    color: white
-}
-
-.review-feed-box { 
-    padding:20px;  
-}
-
-.card{
+h1 {
     display: flex;
+    color: white;
+    margin:auto;
+    
+}
+
+.review-feed-box {
+    padding: 20px;
+    display: flex;
+    width: 100%;
     flex-direction: column-reverse !important;
+}
+
+.card {
     background-color: rgba(243, 245, 250, 0) !important;
     border: none !important;
-    
 }
 
 .review {
-    
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.842);
     box-shadow: 5px 5px 10px black;
-    color: black;
+    color: black;  
 }
 
 .review-body {
@@ -31,9 +32,18 @@ h1{
 
 .review-footer {
     display: flex;
+    flex-direction: row;
+    //margin: auto;
     justify-content: center;
     align-items: center;
     margin: 15px;
+
+    .deleteBtn{
+        margin-left: 20px;
+        margin-bottom: 10px;
+      
+       
+    }
 }
 
 .userlogo {
@@ -49,6 +59,7 @@ h1{
     background-color: rgba(243, 245, 250, 0.221);
     height: 70vh;
 }
+
 
 h1 {
     color: white;
@@ -70,7 +81,4 @@ h1 {
         letter-spacing: 2px;
         flex-direction: row;
     }
-
-
-
 
