@@ -63,8 +63,8 @@ const Home = ({ token, userTitle, setGameReviews}) => {
                                     <p className='review-body'>{review?.reviewBody}</p>
                                     <div className='review-footer'>
                                         <img className='userlogo' src={UserLogo} alt="user logo" />
-                                        {userTitle === review?.username ? <Button color="danger" className='deleteBtn'  onClick={() => deleteReview(review)}>Delete</Button> : null}
                                         {userTitle === review?.username ? <p className="text-danger">Review by: You</p>:  <p>Review by: {review?.username}</p>}
+                                        {userTitle === review?.username ? <Button color="danger" className='deleteBtn'  onClick={() => deleteReview(review)}>Delete</Button> : null}
                                     </div>
 
                                 </li>
