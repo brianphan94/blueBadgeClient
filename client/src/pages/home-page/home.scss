@@ -1,8 +1,8 @@
 h1 {
     color: white;
     margin:auto;
+    
 }
-
 
 .review-feed-box {
     padding: 20px;
@@ -30,9 +30,18 @@ h1 {
 
 .review-footer {
     display: flex;
+    flex-direction: row;
+    //margin: auto;
     justify-content: center;
     align-items: center;
     margin: 15px;
+
+    .deleteBtn{
+        margin-left: 20px;
+        margin-bottom: 10px;
+      
+       
+    }
 }
 
 .userlogo {

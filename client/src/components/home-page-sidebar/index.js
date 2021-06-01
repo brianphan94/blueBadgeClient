@@ -11,6 +11,7 @@ import './sidebar.scss'
 const Sidebar = (props) => {
 
     const [gameName, setGameName] = useState('')
+    
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
@@ -49,7 +50,6 @@ const Sidebar = (props) => {
                 console.log("hit: ", err)
             })
     }
-
 
     useEffect(() => {
         everyPost()
@@ -98,7 +98,7 @@ const Sidebar = (props) => {
                         <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} />
                     </Route>
                     <Route exact path="/games/:id">
-                        <GameCard gameReviews={gameReviews} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
+                        <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
                     </Route>
                 </Switch>
             </div>

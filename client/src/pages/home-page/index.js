@@ -2,13 +2,13 @@
 import './home.scss'
 
 import { useState, useEffect } from 'react';
-import { Card, Container } from 'reactstrap';
+import { Button, Card, Container } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 
 
 
-const Home = ({ token, userTitle, setGameReviews }) => {
+const Home = ({ token, userTitle, setGameReviews}) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -28,6 +28,17 @@ const Home = ({ token, userTitle, setGameReviews }) => {
             }).catch(err => {
                 console.log("hit: ", err)
             })
+    }
+
+    const deleteReview = (review) => {
+        fetch(`http://localhost:4040/review/delete/${review.id}`, {
+       method: 'DELETE',
+       headers: new Headers({
+           'Content-Type': 'application/json',
+           'Authorization': token
+        })
+    })
+        .then(() => everyPost())  
     }
 
 
@@ -52,7 +63,8 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                                     <p className='review-body'>{review?.reviewBody}</p>
                                     <div className='review-footer'>
                                         <img className='userlogo' src={UserLogo} alt="user logo" />
-                                        <p>Review by: {review?.username}</p>
+                                        {userTitle === review?.username ? <Button color="danger" className='deleteBtn'  onClick={() => deleteReview(review)}>Delete</Button> : null}
+                                        {userTitle === review?.username ? <p className="text-danger">Review by: You</p>:  <p>Review by: {review?.username}</p>}
                                     </div>
 
                                 </li>
