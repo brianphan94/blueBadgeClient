@@ -3,6 +3,8 @@ import './home.scss'
  
 import { useState, useEffect } from 'react';
 import { Card, Container } from 'reactstrap';
+
+import Review from "../review/index";
  
 import UserLogo from '../../userlogo.svg';
  
@@ -36,6 +38,7 @@ const Home = ({token}) => {
         <Container>
             <div className='review-feed-box'>
             <h1>Welcome</h1>
+            <Review/>
             <Card>
                 {reviews.length > 0 ? (
                     reviews.map((review) => (
