@@ -6,7 +6,7 @@ import { Card, Container } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 
-const Home = ({ token, userTitle, setGameReviews }) => {
+const Home = ({ token, userTitle, setGameReviews, gamePic }) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -48,7 +48,7 @@ const Home = ({ token, userTitle, setGameReviews }) => {
 
 
     return (
-        <Container className="homeContent">
+        <Container fluid className="homeContent">
             <div className='review-feed-box'>
 
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
@@ -56,9 +56,14 @@ const Home = ({ token, userTitle, setGameReviews }) => {
                     {reviews?.length > 0 ? (
                         reviews?.reverse().map((review) => (
                             <li key={review?.id} className='review'>
-                                <h2>{review?.reviewTitle}</h2>
-                                <h4>{review?.subReviewTitle}</h4>
-                                <p className='review-body'>{review?.reviewBody}</p>
+                                <div className='review-header'>
+                                    <img className='game-pic' src={gamePic} alt="Game Pic"/>
+                                    <h2 className='game-name'>{review?.reviewTitle}</h2>
+                                </div>
+                                <div className='user-review'>
+                                    <h4 className='reviewTitle'>{review?.subReviewTitle}</h4>
+                                    <p className='review-body'>{review?.reviewBody}</p>
+                                </div>
                                 <div className='review-footer'>
                                     <img className='userlogo' src={UserLogo} alt="user logo" />
                                     <p>Review by: {review?.username}</p>

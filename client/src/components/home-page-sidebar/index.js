@@ -69,9 +69,9 @@ const Sidebar = (props) => {
 
             <div className="Route">
                 <Switch>
-                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} /> </Route>
+                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/> </Route>
                     <Route exact path="/home">
-                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} />
+                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/>
                     </Route>
                     <Route exact path="/profile" >
                         <Profile token={props.token} />

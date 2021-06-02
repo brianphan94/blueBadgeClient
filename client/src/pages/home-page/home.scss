@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Sigmar+One&display=swap');
 
 h1{
     color: white
@@ -16,7 +19,6 @@ h1{
 }
 
 .review {
-    
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.842);
     box-shadow: 5px 5px 10px black;
@@ -27,6 +29,8 @@ h1{
     border: 1px solid grey;
     margin: 20px;
     padding: 10px;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
 }
 
 .review-footer {
@@ -53,24 +57,103 @@ h1{
 h1 {
     color: white;
     margin-top: 10px;
+    text-shadow: 2px 2px 2px black;
+    letter-spacing: 2px;
+    flex-direction: row;
 }
 
-    
-    .homeContent {
-        
-        box-shadow: 8px 0px 5px black;
-        background-color: rgba(243, 245, 250, 0.221);
-        height: 70vh;
-    }
+.user-review {
+    border: 1px solid black;
+    padding: 15px;
+    margin: 15px;
+}
 
-    h1 {
-        color: white;
-        margin-top: 10px;
-        text-shadow: 2px 2px 2px black;
-        letter-spacing: 2px;
-        flex-direction: row;
-    }
+.review-header {
+    display: inline;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewTitle {
+    font-family: 'Sigmar One', cursive;
+    font-size: 30px;
+}
+
+.game-name {
+    position: relative;
+    font-family: 'Limelight', cursive;
+    margin: 25px;
+    padding: 15px;
+    font-size: 50px;
+    z-index: 999;
+}
+
+.game-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 10px;
+    opacity: 75%;
+    z-index:1;
+    height: 125px;
+    width: 96.5%;
+    transition: transform .5s, filter 1.5s ease-in-out;
+    filter: grayscale(100%);
+}
+
+.game-pic:hover {
+    filter: grayscale(0);
+}
 
 
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
 
 
