@@ -5,13 +5,13 @@ import Profile from '../../pages/Profile/index'
 import Home from '../../pages/home-page/index'
 import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
+import Review from '../../pages/review'
 
 import './sidebar.scss'
 
 const Sidebar = (props) => {
 
-    const [gameName, setGameName] = useState('')
-    
+    const [gameName, setGameName] = useState('')    
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
@@ -53,31 +53,30 @@ const Sidebar = (props) => {
 
     useEffect(() => {
         everyPost()
-
-    }, [])
+    },[])
 
 
     return (
         <div className="header">
             <Container fluid='lg' className="sideBarDiv">
-
                 <NavbarToggler onClick={toggleNavbar} className="mr-12 toggler">Btn.Mash</NavbarToggler>
                 <Col md={12}>
                     <Collapse isOpen={!collapsed}>
                         <Nav>
-
                             <NavItem>
                                 <Link to="/home">Home</Link>
                             </NavItem>
-
-
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
                             </NavItem>
-
                             <NavItem>
                                 <Link to="/games">Games</Link>
                             </NavItem>
+
+                            <NavItem>
+                                <Link to="/review">Reviews</Link>
+                            </NavItem>
+
                             <Button className="logout" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
@@ -99,6 +98,9 @@ const Sidebar = (props) => {
                     </Route>
                     <Route exact path="/games/:id">
                         <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
+                    </Route>
+                    <Route exact path="/review">
+                        <Review token={props.token} />
                     </Route>
                 </Switch>
             </div>

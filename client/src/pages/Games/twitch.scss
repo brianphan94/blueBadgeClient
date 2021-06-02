@@ -44,13 +44,12 @@
     .next {
         display: flex;
         float: right;
-        margin: 20px 10px 20px 0px;
+        margin: 20px 15px 20px 0px;
         padding: 10px;
         color: white;
         font-size: larger;
         font-weight: bold;
         letter-spacing: 3px;
-
         &:hover {
             color: white;
             transform: scale(1.02);
@@ -65,13 +64,12 @@
 
     .prev {
         float: left;
-        margin: 20px 0px 20px 30px;
+        margin: 20px 0px 20px 35px;
         padding: 10px;
         color: white;
         font-size: larger;
         font-weight: bold;
         letter-spacing: 3px;
-
         &:hover {
             color: white;
             transform: scale(1.02);
@@ -80,20 +78,17 @@
         }
     }
 }
-
 .games {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     padding: 20px;
     float: left;
-
     .card-body {
         margin: 5px;
         padding: 0px;
         background-color: rgba(255, 255, 255, 0.877);
         box-shadow: 5px 5px 10px;
-
         img {
             box-shadow: 5px 5px 10px;
         }
