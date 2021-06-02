@@ -7,8 +7,6 @@ const Login = (props) => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
   
-    
-    
     let auth = (e) => {
         e.preventDefault()
         fetch('http://localhost:4040/user/login', {
@@ -37,10 +35,7 @@ const Login = (props) => {
             console.log(err)
         })
     }
-
-   
-
-    
+ 
     return(
         <Form onSubmit={auth}>
             <FormGroup>
@@ -58,12 +53,10 @@ const Login = (props) => {
             <Input type="password" aria-label="password" placeholer="Password" value={password} required onChange={(e) => {setPassword(e.target.value)}}>
             </Input>
             </Col>
-            <Button outline color="warning" size="lg" type="submit">Login</Button>
+            <Button className="login" outline color="warning" size="lg" type="submit">Login</Button>
 
             </FormGroup>
-        </Form>
-
-       
+        </Form>    
     )
 }
 

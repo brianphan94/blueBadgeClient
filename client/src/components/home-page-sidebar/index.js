@@ -10,8 +10,7 @@ import './sidebar.scss'
 
 const Sidebar = (props) => {
 
-    const [gameName, setGameName] = useState('')
-    
+    const [gameName, setGameName] = useState('')    
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
@@ -53,28 +52,22 @@ const Sidebar = (props) => {
 
     useEffect(() => {
         everyPost()
-
-    }, [])
+    },[])
 
 
     return (
         <div className="header">
             <Container fluid='lg' className="sideBarDiv">
-
                 <NavbarToggler onClick={toggleNavbar} className="mr-12 toggler">Btn.Mash</NavbarToggler>
                 <Col md={12}>
                     <Collapse isOpen={!collapsed}>
                         <Nav>
-
                             <NavItem>
                                 <Link to="/home">Home</Link>
                             </NavItem>
-
-
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
                             </NavItem>
-
                             <NavItem>
                                 <Link to="/games">Games</Link>
                             </NavItem>

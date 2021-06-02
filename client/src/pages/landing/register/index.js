@@ -20,7 +20,7 @@ const Register = (props) => {
     const toggle = () => {
         setModal(!modal)
     }
-    const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
+    const closeBtn = <Button color="danger" className="close" onClick={toggle}>&times;</Button>
 
     let authTwo = (e) => {
         e.preventDefault()
