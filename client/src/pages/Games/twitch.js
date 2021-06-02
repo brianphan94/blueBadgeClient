@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 
-
-import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, CardImg, Input, InputGroupAddon, InputGroup, Button } from 'reactstrap';
-
+import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, CardImg, Input, InputGroupAddon, InputGroup, Button, Spinner } from 'reactstrap';
 
 import './twitch.scss'
 
 const Twitch = ({ setGameName, setGamePic }) => {
 
     const history = useHistory()
-
     const [games, setGames] = useState([])
     const [prevUrl, setPrevUrl] = useState('')
     const [nextUrl, setNextUrl] = useState('')
@@ -93,22 +90,22 @@ const Twitch = ({ setGameName, setGamePic }) => {
                     </InputGroupAddon>
                 </InputGroup>
 
-                {games.length > 0 ? (
-                    games.map(game => (
-                        <div key={game.id}>
-                            {game.background_image ? <Col className="games" sm="4">
-                                <Card className="gameCard" onClick={() => { history.push(`/games/${game.name}`); setGameName(game.name); setGamePic(game.background_image) }}>
+                {games?.length > 0 ? (
+                    games?.map(game => (
+                        <div key={game?.id}>
+                            {game?.background_image ? <Col className="games" sm="4">
+                                <Card className="gameCard" onClick={() => { history.push(`/games/${game?.name}`); setGameName(game?.name); setGamePic(game?.background_image) }}>
                                     <CardBody>
-                                        <CardTitle>{game.name}</CardTitle>
-                                        <CardSubtitle className="mb-2 text-muted">Released: {game.released}</CardSubtitle>
-                                        <CardImg width='250px' height="250px" src={game.background_image} alt="game Image"></CardImg>
-                                        <CardFooter className="text-muted">Rating: {game.rating} out of {game.rating_top}</CardFooter>
+                                        <CardTitle>{game?.name}</CardTitle>
+                                        <CardSubtitle className="mb-2 text-muted">Released: {game?.released}</CardSubtitle>
+                                        <CardImg width='250px' height="250px" src={game?.background_image} alt="game Image"></CardImg>
+                                        <CardFooter className="text-muted">Rating: {game?.rating} out of {game?.rating_top}</CardFooter>
                                     </CardBody>
                                 </Card>
                             </Col> : null}
                         </div>
                     ))
-                ) : null}
+                ) : <Spinner color="warning">{' '}</Spinner> }
 
             </Container>
         </div>
