@@ -27,7 +27,6 @@ function App() {
     setSessionToken(newToken);
 
   }
-
   const clearToken = () => {
     localStorage.clear();
     setSessionToken('')
