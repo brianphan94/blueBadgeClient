@@ -7,10 +7,10 @@ function Review(props) {
 
     const [values, setValues] = useState({
         username: "",
-        reviewTitle: "",
+        reviewTitle: "", // name of the game game
+        subReviewTitle: "", // user's review title title 
         reviewBody: "",
     });
-
 
     // event handlers 
     const handleFirstNameInputChange = (event) => {
@@ -19,6 +19,10 @@ function Review(props) {
 
     const handleReviewTitleInputChange = (event) => {
         setValues({ ...values, reviewtitle: event.target.value })
+    }
+
+    const handleSubReviewTitleInputChange = (event) => {
+        setValues({ ...values, subreviewtitle: event.target.value })
     }
 
     const handleReviewBodyInputChange = (event) => {
@@ -38,6 +42,7 @@ function Review(props) {
                 {
                     username: values.username,
                     reviewTitle: values.reviewtitle,
+                    subReviewTitle: values.subreviewtitle, 
                     reviewBody: values.reviewbody
                 }
             )
@@ -57,6 +62,7 @@ function Review(props) {
             ...values,
             username: "",
             reviewtitle: "",
+            subreviewtitle: "",
             reviewbody: "",
         })
     }
@@ -75,15 +81,25 @@ function Review(props) {
                     placeholder="user name"
                 />
 
-                <p>Review title:</p>
+                <p>Game title:</p>
                 <input
                     onChange={handleReviewTitleInputChange}
                     value={values.reviewtitle}
                     type="text"
                     name="reviewtitle"
                     id="reviewtitle"
-                    placeholder="review title"
+                    placeholder="name of game?"
                 />
+
+                <p>Review title:</p>
+                <input
+                    onChange={handleSubReviewTitleInputChange}
+                    value={values.subreviewtitle}
+                    type="text"
+                    name="subreviewtitle"
+                    id="subreviewtitle"
+                    placeholder="Give your review a title"
+                />  
 
                 <p>Write your review:</p>
                 <textarea

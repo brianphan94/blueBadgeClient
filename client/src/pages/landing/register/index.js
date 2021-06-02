@@ -1,27 +1,24 @@
 import './register.scss'
- 
+
 import { useEffect, useState } from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Button, Input, FormText, Alert } from 'reactstrap'
- 
+
 const Register = (props) => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
     const [modal, setModal] = useState(false)
- 
     useEffect(() => {
         setError(false)
         setEmail('')
         setUsername('')
         setPassword('')
     }, [modal])
- 
     const toggle = () => {
         setModal(!modal)
     }
     const closeBtn = <Button className="close" onClick={toggle}>&times;</Button>
- 
     let authTwo = (e) => {
         e.preventDefault()
         fetch('http://localhost:4040/user/register', {
@@ -38,22 +35,21 @@ const Register = (props) => {
             })
         }).then(res => res.json())
             .then(json => {
+                props.setUserTitle(json.user.username)
                 props.updateToken(json.token)
- 
- 
-                if (!props.token) {
-                    setError(true)
-                   
- 
-                }
+
+
             })
             .catch(err => {
                 console.log(err)
+                if (!props.token) {
+                    setError(true)
+                }
             })
- 
+
     }
- 
- 
+
+
     return (
         <div className="modalDiv">
             <button onClick={toggle}>Don't have an account? Sign up here!</button>
@@ -86,8 +82,7 @@ const Register = (props) => {
             </Modal>
         </div>
     )
- 
-}
- 
-export default Register
 
+}
+
+export default Register

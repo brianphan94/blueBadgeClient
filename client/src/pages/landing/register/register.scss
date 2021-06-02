@@ -1,34 +1,29 @@
- 
- 
+
+
 .modal-content{
     margin-top: 38%;
     background-color: rgba(243, 245, 250, 0.221) !important;
     border: none !important;
   
 }
- 
 .modalForm{
     height: max-content;
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: 5px 5px 10px;
     background-color: rgba(230, 227, 227, 0.986);
- 
    h3{
        padding-right: 20px;
        margin-bottom: 0px;
    }
- 
     .modal-body{
         display: flex;
         flex-direction: column;
     }
- 
     input{
         margin-bottom: 20px;
         box-shadow: 2px 2px 3px black;
     }
- 
     button{
         background-color: rgb(255, 198,72);
         border: none;
@@ -37,11 +32,9 @@
         font-size: large;
         font-weight: bold;
         letter-spacing: 1px;
- 
         &:hover{
             background-color: rgb(255, 198,72);
             color: white;
         }
     }
 }
-
