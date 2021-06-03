@@ -92,7 +92,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: relative;
     margin: 10px;
     opacity: 75%;
     z-index:1;
@@ -100,10 +100,12 @@ h1 {
     width: 96.5%;
     transition: transform .5s, filter 1.5s ease-in-out;
     filter: grayscale(100%);
+    filter: saturate(0%);
 }
 
 .game-pic:hover {
     filter: grayscale(0);
+    filter: saturate(300%);
 }
 
 

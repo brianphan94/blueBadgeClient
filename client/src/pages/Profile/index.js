@@ -4,12 +4,11 @@ import { Card, CardTitle, CardSubtitle, Container, Input, Button } from "reactst
 
 import UserLogo from '../../userlogo.svg';
 
-const Profile = (props) => {
+const Profile = (props, {gamePic}) => {
 
     const [search, setSearch] = useState('')
     //const [user, getUser] = useState([])
     let user = []
-    
     const searchUsers = () => {
         //!this is the same method that I used to get the game reviews matching the game title to show up. If you go into the sidebar you can see that I passed the game reviews in as a prop. 
             
@@ -26,34 +25,34 @@ const Profile = (props) => {
             return(
                 <div className="user-container">
                     <div className="user-info">
-                     <img className='user-picture' src={UserLogo} alt="user logo" />
-                     </div>
-                <Card >
-                <div className="review-info">
-                    {user.length > 0 ? (
-                        user.map((review) => (
-                            <li key={Math.random().toString(36).substr(2, 9)} className='review'>
-                                <p className="review-title" tag="h3">{review?.gameReview.reviewTitle}</p>
-                                <hr />
-                                <p className='review-title' tag="h5" className="text-muted">{review?.gameReview?.subReviewTitle}</p>
+                        <h1>USERNAME HERE</h1>
+                        <img className='user-picture' src={UserLogo} alt="user logo" />
+                    </div>
+                    <div className="review-info">
+                        {user.length > 0 ? (
+                            user.map((review) => (
+                                <li key={Math.random().toString(36).substr(2, 9)} className='review'>
+                                    <img className='game-pic' src={gamePic} alt="Game Pic"/>
+                                    <p className="game-name" tag="h3">{review?.gameReview.reviewTitle}</p>
+                                    <hr />
+                                    <p className='reviewTitle' tag="h5" >{review?.gameReview?.subReviewTitle}</p>
 
-                                <p className='review-body'>{review?.gameReview?.reviewBody}</p>
+                                    <p className='review-body'>{review?.gameReview?.reviewBody}</p>
 
-                                <p>{review?.gameReview?.createdAt}</p>
-                                <hr />
-                                <div className='review-footer'>
+                                    <p>{review?.gameReview?.createdAt}</p>
+                                    <hr />
+                                    <div className='review-footer'>
 
 
-                                    <CardSubtitle tag="h6" className="text-muted">Review by: {review?.gameReview?.username}</CardSubtitle>
-                                </div>
+                                        <CardSubtitle tag="h6" className="text-muted">Review by: {review?.gameReview?.username}</CardSubtitle>
+                                    </div>
 
-                            </li>
-                        ))
-                        ) : (
-                            <h3 className="noReviews">No Reviews by this user!</h3>
-                            )}
-                            </div>
-                </Card>
+                                </li>
+                            ))
+                            ) : (
+                                <h3 className="noReviews">No Reviews by this user!</h3>
+                                )}
+                    </div>
                 </div>
             )
 
