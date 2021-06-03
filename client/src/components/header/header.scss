@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    
+
+    img{
+        padding: 5px;
+    }
+}
+
+li {
+    list-style: none;
+}

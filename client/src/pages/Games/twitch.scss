@@ -1,0 +1,96 @@
+.gameContent {
+    overflow: scroll;
+    display: block !important;
+    box-shadow: 8px 0px 5px black;
+    background-color: rgba(243, 245, 250, 0.221);
+    height: 70vh;
+
+    h4 {
+        margin-top: 2%;
+        font-family: 'Press Start 2P';
+        padding-bottom: 1%;
+        text-shadow: 2px 2px 3px black;
+        color:white;
+        letter-spacing: 1px;
+    }
+    .inputGroup {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .searchButton{
+        color: white;
+        font-size: larger;
+        font-weight: bold;
+        
+
+        &:hover{
+            color: white; 
+            transform: scale(1.02);
+            box-shadow: 1px 1px 2px black;
+        }
+    }
+
+    .gameCard {
+        &:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+    }
+
+    .next {
+        display: flex;
+        float: right;
+        margin: 20px 15px 20px 0px;
+        padding: 10px;
+        color: white;
+        font-size: larger;
+        font-weight: bold;
+        letter-spacing: 3px;
+        &:hover {
+            color: white;
+            transform: scale(1.02);
+            transition-duration: 0.2s;
+            box-shadow: 2px 2px 3px black;
+        }
+
+        &:focus {
+            color: white;
+        }
+    }
+
+    .prev {
+        float: left;
+        margin: 20px 0px 20px 35px;
+        padding: 10px;
+        color: white;
+        font-size: larger;
+        font-weight: bold;
+        letter-spacing: 3px;
+        &:hover {
+            color: white;
+            transform: scale(1.02);
+            transition-duration: 0.2s;
+            box-shadow: 2px 2px 5px black;
+        }
+    }
+}
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 20px;
+    float: left;
+    .card-body {
+        margin: 5px;
+        padding: 0px;
+        background-color: rgba(255, 255, 255, 0.877);
+        box-shadow: 5px 5px 10px;
+        img {
+            box-shadow: 5px 5px 10px;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+.sideBarDiv {
+    margin-bottom: 2%;
+    margin-top: -2%;
+
+    a {
+        color: white;
+        font-size: x-large;
+        text-decoration: none;
+        font-weight: bold;
+        
+    
+
+        &:hover {
+            text-shadow: 3px 3px 6px;
+            transition-duration: 0.3s;
+            color: white;
+        
+        }
+    }
+
+    .toggler {
+        font-size: x-large;
+        background-color: transparent;
+        margin: auto;
+        color: #ffba04;
+        text-shadow: 1px 1px 3px white;
+        letter-spacing: 1px;
+        font-family: "Press Start 2P", cursive;
+    }
+
+    button {
+        background-color: #ffba04;
+        font-size: larger;
+        font-weight: bold;
+        border: none;
+        text-decoration: none;
+        padding: 10px;
+
+        &:hover {
+            background-color: transparent;
+            transform: scale(1.02);
+        }
+    }
+
+    li {
+        
+        padding: 8px;
+        margin: auto;
+        margin-top: 2%;
+    }
+
+    .logout {
+        margin: auto;
+        margin-top: 2%;
+        color: white;
+        background-color: transparent;
+        border: 1px solid #ffba04;
+
+        &:hover{
+            border: 1px solid #ffba04;
+            box-shadow: 3px 3px 4px black;
+        }
+    }
+}

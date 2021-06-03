@@ -1,0 +1,148 @@
+.homeContent {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+}
+
+.gameColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    float: left;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 20px;
+
+    h2 {
+        color: white;
+        letter-spacing: 1px;
+        border-bottom: 2px solid white;
+        padding: 10px;
+    }
+
+    img {
+        margin: auto;
+        box-shadow: 2px 2px 3px black;
+        padding: 0px;
+        width: 100%;
+    }
+
+    button {
+        margin-top: 10px;
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px black;
+
+        &:hover {
+            color: white;
+            box-shadow: 2px 2px 3px black;
+        }
+    }
+}
+
+.gameReview {
+    background-color: rgba(255, 255, 255, 0.918);
+    border-radius: 5px;
+
+    .modalHeader {
+        color: #ffbc04ec;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.541);
+    }
+
+    .reviewInput {
+        box-shadow: 2px 2px 3px black;
+        margin-bottom: 15px;
+    }
+    .close {
+        margin-left: 10px !important;
+        color: white !important;
+        font-weight: bold !important;
+
+        &:hover {
+            transform: scale(1.01);
+            box-shadow: 1px 1px 2px black;
+        }
+    }
+
+    .post {
+        font-weight: bold !important;
+        padding: 10px;
+
+        &:hover {
+            transform: scale(1.04);
+            box-shadow: 1px 1px 3px black;
+        }
+    }
+}
+
+.noReviews {
+    font-weight: normal;
+    text-shadow: 2px 2px 1px black;
+    flex-wrap: wrap;
+    color: rgba(255, 255, 255, 0.835);
+    letter-spacing: 2px;
+    padding: 2px;
+    margin: auto;
+}
+
+.reviewsHeader {
+    color: white;
+    letter-spacing: 2px;
+    font-size: larger;
+    text-shadow: 2px 2px 1px black;
+}
+
+.reviewColumn {
+    overflow: scroll;
+    box-shadow: 8px 0px 5px black;
+    background-color: rgba(243, 245, 250, 0.221);
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 20px;
+    height: 60vh;
+
+    .reviewCard {
+        flex-direction: column-reverse;
+    }
+
+    .review {
+        width: 100%;
+        padding: 10px;
+        margin: auto;
+        margin-bottom: 12px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.863);
+
+        h3 {
+            font-weight: normal;
+            flex-wrap: wrap;
+            color: #ffbc04b6;
+            letter-spacing: 2px;
+            box-shadow: 2px 2px 2px black;
+            padding: 2px;
+            margin: auto;
+        }
+
+        h5 {
+            text-align: left;
+            margin-left: 50px;
+            letter-spacing: 1px;
+        }
+
+        .review-body {
+            overflow: scroll;
+            flex-wrap: wrap;
+            height: 100px;
+            margin-top: 8px;
+            margin-left: 50px;
+            margin-right: 50px;
+            border: 3px solid #ffbc046c;
+            box-shadow: 2px 2px 3px black;
+            text-align: left;
+        }
+    }
+}
