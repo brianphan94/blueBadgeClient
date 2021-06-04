@@ -6,6 +6,7 @@ import Home from '../../pages/home-page/index'
 import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
 import Review from '../../pages/review'
+import EditReview from '../../pages/edit'
 
 import './sidebar.scss'
 
@@ -84,6 +85,10 @@ const Sidebar = (props) => {
                                 <Link to="/review">Reviews</Link>
                             </NavItem>
 
+                            <navItem>
+                                <Link to="/edit">Edit Reviews</Link>
+                            </navItem>
+
                             <Button className="logout" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
@@ -107,7 +112,10 @@ const Sidebar = (props) => {
                         <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
                     </Route>
                     <Route exact path="/review">
-                        <Review token={props.token} />
+                        <Review token={props.token} userTitle={props.userTitle} />
+                    </Route>
+                    <Route exact path="/edit">
+                        <EditReview /> 
                     </Route>
                 </Switch>
             </div>

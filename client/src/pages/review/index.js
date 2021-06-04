@@ -1,21 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+// import { Input } from 'reactstrap';
 
 
 
 function Review(props) {
 
     const [values, setValues] = useState({
-        username: "",
+        // username: "",
         reviewTitle: "", // name of the game game
         subReviewTitle: "", // user's review title title 
         reviewBody: "",
     });
-
-    // event handlers 
-    const handleFirstNameInputChange = (event) => {
-        setValues({ ...values, username: event.target.value })
-    }
 
     const handleReviewTitleInputChange = (event) => {
         setValues({ ...values, reviewtitle: event.target.value })
@@ -40,7 +36,7 @@ function Review(props) {
             }),
             body: JSON.stringify(
                 {
-                    username: values.username,
+                    username: props.userTitle, // taking value handed down from props value will be username that is currently logged in
                     reviewTitle: values.reviewtitle,
                     subReviewTitle: values.subreviewtitle, 
                     reviewBody: values.reviewbody
@@ -60,7 +56,7 @@ function Review(props) {
         document.getElementById("reviewbody").value = "";
         setValues({
             ...values,
-            username: "",
+            // username: "",
             reviewtitle: "",
             subreviewtitle: "",
             reviewbody: "",
@@ -71,15 +67,6 @@ function Review(props) {
         <div>
             <h1>Post a Review</h1>
             <form onSubmit={handleSubmitForm} >
-                <p>Username:</p>
-                <input
-                    onChange={handleFirstNameInputChange}
-                    value={values.username}
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="user name"
-                />
 
                 <p>Game title:</p>
                 <input
