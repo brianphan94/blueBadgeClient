@@ -3,14 +3,12 @@
     display: block !important;
     box-shadow: 8px 0px 5px black;
     background-color: rgba(243, 245, 250, 0.221);
-    height: 70vh;
+    height: 72vh;
 
     h4 {
-        margin-top: 2%;
-        font-family: 'Press Start 2P';
-        padding-bottom: 1%;
+        font-family: "Press Start 2P";
         text-shadow: 2px 2px 3px black;
-        color:white;
+        color: white;
         letter-spacing: 1px;
     }
     .inputGroup {
@@ -21,14 +19,13 @@
         padding: 20px;
     }
 
-    .searchButton{
+    .searchButton {
         color: white;
         font-size: larger;
         font-weight: bold;
-        
 
-        &:hover{
-            color: white; 
+        &:hover {
+            color: white;
             transform: scale(1.02);
             box-shadow: 1px 1px 2px black;
         }
@@ -44,7 +41,7 @@
     .next {
         display: flex;
         float: right;
-        margin: 20px 15px 20px 0px;
+        margin: 10px 15px 10px 0px;
         padding: 10px;
         color: white;
         font-size: larger;
@@ -64,7 +61,7 @@
 
     .prev {
         float: left;
-        margin: 20px 0px 20px 35px;
+        margin: 10px 0px 10px 35px;
         padding: 10px;
         color: white;
         font-size: larger;
@@ -82,7 +79,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    padding: 20px;
+    padding: 15px;
     float: left;
     .card-body {
         margin: 5px;

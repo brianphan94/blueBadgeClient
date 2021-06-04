@@ -16,7 +16,6 @@ const Sidebar = (props) => {
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
 
-
     useEffect(() => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')) {
             setGamePic(localStorage.getItem('Game Pic'))
@@ -32,9 +31,7 @@ const Sidebar = (props) => {
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
     }, [gamePic, gameName, gameReviews])
 
-
     const toggleNavbar = () => setCollapsed(!collapsed)
-
 
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
@@ -50,7 +47,7 @@ const Sidebar = (props) => {
                 console.log("hit: ", err)
             })
     }
-
+    
     useEffect(() => {
         everyPost()
     },[])
@@ -86,7 +83,7 @@ const Sidebar = (props) => {
 
             <div className="Route">
                 <Switch>
-                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} /> </Route>
+                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token}/> </Route>
                     <Route exact path="/home">
                         <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} />
                     </Route>
