@@ -9,19 +9,19 @@ const Register = (props) => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
     const [modal, setModal] = useState(false)
+
     useEffect(() => {
         setError(false)
         setEmail('')
         setUsername('')
         setPassword('')
     }, [modal])
+
     const toggle = () => {
         setModal(!modal)
     }
 
-
     const closeBtn = <Button color="danger" className="close" onClick={toggle}>&times;</Button>
-
 
     let authTwo = (e) => {
         e.preventDefault()
@@ -52,7 +52,6 @@ const Register = (props) => {
             })
 
     }
-
 
     return (
         <div className="modalDiv">

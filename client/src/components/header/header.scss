@@ -1,15 +1,11 @@
 .header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-content: space-between;
-    
+    margin-bottom: 3%;
 
-    img{
+    img {
         padding: 5px;
+        margin: auto;
     }
 }
 
-li {
-    list-style: none;
-}
