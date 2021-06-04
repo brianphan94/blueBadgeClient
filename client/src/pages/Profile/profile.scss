@@ -3,15 +3,6 @@
     height:100%;
 }
 
-.users {
-    display: flex;
-    align-content: center;
-    border: 5px solid black;
-    height: 60vh;
-    padding: 1rem;
-    margin: 1rem;
-}
-
 .username {
     font-size: 50px;
     display: flex;
@@ -65,5 +56,19 @@
 
 .text-muted {
     padding: 10px;
+}
+
+.gamepic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 5px;
+    opacity: 75%;
+    z-index:999;
+    height: 130px;
+    right: 50%;
+    width: 65%;
+    transform: translate(50%);
 }
 

@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react';
 import { Card, Container } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
+import Logo from './controller.svg';
 
-const Home = ({ token, userTitle, setGameReviews, gamePic }) => {
+const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -52,18 +53,22 @@ const Home = ({ token, userTitle, setGameReviews, gamePic }) => {
             <div className='review-feed-box'>
 
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
+                <hr />
                 <Card>
                     {reviews?.length > 0 ? (
                         reviews?.reverse().map((review) => (
                             <li key={review?.id} className='review'>
                                 <div className='review-header'>
-                                    <img className='game-pic' src={gamePic} alt="Game Pic"/>
+                                    <img className='logo' src={Logo} alt="logo"/>
+                                    <img className='game-pic' src={gamePicArray} alt="Game Pic"/>
                                     <h2 className='game-name'>{review?.reviewTitle}</h2>
                                 </div>
+                                <hr />
                                 <div className='user-review'>
                                     <h4 className='reviewTitle'>{review?.subReviewTitle}</h4>
                                     <p className='review-body'>{review?.reviewBody}</p>
                                 </div>
+                                <hr />
                                 <div className='review-footer'>
                                     <img className='userlogo' src={UserLogo} alt="user logo" />
                                     <p>Review by: {review?.username}</p>

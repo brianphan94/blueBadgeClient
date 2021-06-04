@@ -4,7 +4,7 @@ import { Card, CardTitle, CardSubtitle, Container, Input, Button } from "reactst
 
 import UserLogo from '../../userlogo.svg';
 
-const Profile = (props, {gamePic}) => {
+const Profile = (props, {gamePicArray}) => {
 
     const [search, setSearch] = useState('')
     //const [user, getUser] = useState([])
@@ -25,26 +25,29 @@ const Profile = (props, {gamePic}) => {
             return(
                 <div className="user-container">
                     <div className="user-info">
-                        <h1>USERNAME HERE</h1>
-                        <img className='user-picture' src={UserLogo} alt="user logo" />
+                        <h1>{search}</h1>
+                        <img className='user-picture' src={UserLogo} alt="user logo" /> 
                     </div>
                     <div className="review-info">
                         {user.length > 0 ? (
-                            user.map((review) => (
+                            user.reverse().map((review) => (
                                 <li key={Math.random().toString(36).substr(2, 9)} className='review'>
-                                    <img className='game-pic' src={gamePic} alt="Game Pic"/>
+                                    <img className='gamepic' src={gamePicArray} alt="Game Pic"/>
                                     <p className="game-name" tag="h3">{review?.gameReview.reviewTitle}</p>
                                     <hr />
+                                    <div className='user-review'>
                                     <p className='reviewTitle' tag="h5" >{review?.gameReview?.subReviewTitle}</p>
 
                                     <p className='review-body'>{review?.gameReview?.reviewBody}</p>
+                                    </div>
 
-                                    <p>{review?.gameReview?.createdAt}</p>
+                                    {/*  */}
                                     <hr />
                                     <div className='review-footer'>
 
 
                                         <CardSubtitle tag="h6" className="text-muted">Review by: {review?.gameReview?.username}</CardSubtitle>
+                                        <CardSubtitle tag="h6" className="text-muted">{review?.gameReview?.createdAt}</CardSubtitle> 
                                     </div>
 
                                 </li>
@@ -73,6 +76,7 @@ const Profile = (props, {gamePic}) => {
     return(
 
         <Container fluid className="gameContent"><h1>Profile Page</h1>
+        <hr />
         <Input placeholder ='Search for a user' value={search} onChange={(e) => setSearch(e.target.value)}/>
         {/* <Button type='text' color="warning" onClick={searchUsers}>Search</Button> */}
         {searchUsers()}
