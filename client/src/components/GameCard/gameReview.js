@@ -4,8 +4,6 @@ import { Button, Col, Container, Modal, ModalHeader, ModalBody, ModalFooter, Inp
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 
-
-
 const GameCard = (props) => {
 
     const history = useHistory()
@@ -67,27 +65,27 @@ const GameCard = (props) => {
             <Col md={6} className="reviewColumn">
                 <h2 className='reviewsHeader'>Reviews for <i>{props.gameName}</i></h2>
                 <hr />
-                <Card className="reviewCard" >
                     {newArr.length > 0 ? (
-                        newArr.map((review) => (
-                            <li key={Math.random().toString(36).substr(2, 9)} className='review'>
+                        newArr.reverse().map((review) => (
+                            <Card className="reviewCard" key={Math.random().toString(36).substr(2, 9)} >
+                            <li  className='theReview'>
                                 <CardTitle tag="h3">{review?.game?.reviewTitle}</CardTitle>
                                 <hr />
                                 <CardSubtitle tag="h5" className="text-muted">{review?.game?.subReviewTitle}</CardSubtitle>
 
-                                <p className='review-body'>{review?.game?.reviewBody}</p>
+                                <p className='reviewBody'>{review?.game?.reviewBody}</p>
                                 <hr />
-                                <div className='review-footer'>
+                                <div className='reviewFooter'>
                                     {review?.game?.username === props.userTitle ? <CardSubtitle tag="h6" className="text-danger"> Review by: You</CardSubtitle> : <CardSubtitle tag="h6" className="text-muted">Review by: {review?.game?.username}</CardSubtitle>}
 
                                     {props.userTitle === review?.game?.username ? <Button color="danger" className='deleteBtn' onClick={() => deleteReview(review)}>Delete</Button> : null}
                                 </div>
                             </li>
+                </Card>
                         ))
                     ) : (
                         <h3 className="noReviews">Be the first to leave a review!</h3>
                     )}
-                </Card>
             </Col>
         )
     }

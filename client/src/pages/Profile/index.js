@@ -4,7 +4,7 @@ import { Card, CardTitle, CardSubtitle, Container, Input, Button } from "reactst
 
 import UserLogo from '../../userlogo.svg';
 
-const Profile = (props, {gamePicArray}) => {
+const Profile = (props, gamePicArray) => {
 
     const [search, setSearch] = useState('')
     //const [user, getUser] = useState([])

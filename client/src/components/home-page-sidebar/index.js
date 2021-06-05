@@ -16,22 +16,25 @@ const Sidebar = (props) => {
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
     const [gamePicArray, setGamePicArray] = useState([])
-
+   
     useEffect(() => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
-            setGamePicArray(localStorage.getItem('Game Pic Array'))
+            //setGamePicArray(localStorage.getItem('Game Pic Array'))
             let retrieved = localStorage.getItem('Game Reviews')
             setGameReviews(JSON.parse(retrieved))
+            // let img = localStorage.getItem('Game Pic Array')
+            // setGamePicArray(JSON.parse(img))
         }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('Game Pic', gamePic)
         localStorage.setItem('Game Name', gameName)
-        localStorage.setItem('Game Pic Array', gamePicArray)
+        //localStorage.setItem('Game Pic Array', gamePicArray)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
+        //localStorage.setItem('Game Pic Array', JSON.stringify(gamePicArray))
     }, [gamePic, gameName, gameReviews])
 
     const toggleNavbar = () => setCollapsed(!collapsed)
