@@ -9,14 +9,14 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
 
     const history = useHistory()
     const [games, setGames] = useState([])
+    const [gameUrl, setGameUrl] = useState(`https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&page_size=12&ordering=-released,rating`)
     const [prevUrl, setPrevUrl] = useState('')
     const [nextUrl, setNextUrl] = useState('')
     const [search, setSearch] = useState('')
 
     let TwitchAPI = async () => {
-        let url = "https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&page_size=12&ordering=-released,rating"
 
-        const res = await fetch(url, {
+        const res = await fetch(gameUrl, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -26,37 +26,7 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
         setGames(json.results)
         setNextUrl(json.next)
         setPrevUrl(json.previous)
-    }
-
-    const nextPage = async () => {
-        if (nextUrl) {
-            const res = await fetch(nextUrl, {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            })
-            const json = await res.json()
-            setGames(json.results)
-            setNextUrl(json.next)
-            setPrevUrl(json.previous)
-
-        }
-    }
-
-    const prevPage = async () => {
-        if (prevUrl) {
-            const res = await fetch(prevUrl, {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            })
-            const json = await res.json()
-            setGames(json.results)
-            setPrevUrl(json.previous)
-
-        }
+       
     }
 
     const searchInput = async () => {
@@ -74,15 +44,15 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
 
     useEffect(() => {
         TwitchAPI()
-    }, [])
+    }, [gameUrl])
 
     return (
         <div>
             <Container fluid="md" className="gameContent">
                 <h4>Search and Review Games!</h4>
                 <hr />
-                {nextUrl === null ? <Button color="warning" className="next" onClick={TwitchAPI}>Back</Button> : <Button color="warning" className="next" onClick={nextPage} >Next</Button>}
-                {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={prevPage}>Previous</Button>}
+                {nextUrl === null ? <Button color="warning" className="next" onClick={TwitchAPI}>Back</Button> : <Button color="warning" className="next" onClick={() => setGameUrl(nextUrl)} >Next</Button>}
+                {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={() => setGameUrl(prevUrl)}>Previous</Button>}
                 <InputGroup className="inputGroup">
                     <Input value={search} onChange={(e) => setSearch(e.target.value)} />
                     <InputGroupAddon addonType="append">

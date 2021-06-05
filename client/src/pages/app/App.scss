@@ -13,8 +13,7 @@ body {
 .titleBox {
     width: max-content;
     margin: auto;
-    padding: 20px;
-   
+    padding: 10px;
     border-radius: 5px;
 
     h3 {
@@ -102,6 +101,7 @@ button {
     font-size: normal;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
+    padding-bottom: 4%;
 
     &:hover {
         color: black;

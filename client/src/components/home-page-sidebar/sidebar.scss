@@ -2,21 +2,18 @@
 
 .sideBarDiv {
     margin-bottom: 2%;
-    margin-top: -2%;
+    margin-top: -3%;
 
     a {
         color: white;
         font-size: x-large;
         text-decoration: none;
         font-weight: bold;
-        
-    
 
         &:hover {
             text-shadow: 3px 3px 6px;
             transition-duration: 0.3s;
             color: white;
-        
         }
     }
 
@@ -45,7 +42,6 @@
     }
 
     li {
-        
         padding: 8px;
         margin: auto;
         margin-top: 2%;
@@ -58,7 +54,7 @@
         background-color: transparent;
         border: 1px solid #ffba04;
 
-        &:hover{
+        &:hover {
             border: 1px solid #ffba04;
             box-shadow: 3px 3px 4px black;
         }

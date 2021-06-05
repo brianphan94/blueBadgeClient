@@ -17,7 +17,6 @@ const Sidebar = (props) => {
     const [gameReviews, setGameReviews] = useState([])
     const [gamePicArray, setGamePicArray] = useState([])
 
-
     useEffect(() => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
@@ -35,9 +34,7 @@ const Sidebar = (props) => {
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
     }, [gamePic, gameName, gameReviews])
 
-
     const toggleNavbar = () => setCollapsed(!collapsed)
-
 
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
@@ -53,7 +50,7 @@ const Sidebar = (props) => {
                 console.log("hit: ", err)
             })
     }
-
+    
     useEffect(() => {
         everyPost()
     },[])
