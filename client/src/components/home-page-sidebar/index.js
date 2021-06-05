@@ -115,7 +115,7 @@ const Sidebar = (props) => {
                         <Review token={props.token} userTitle={props.userTitle} />
                     </Route>
                     <Route exact path="/edit">
-                        <EditReview /> 
+                        <EditReview token={props.token} userTitle={props.userTitle} /> 
                     </Route>
                 </Switch>
             </div>

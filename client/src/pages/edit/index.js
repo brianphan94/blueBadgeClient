@@ -1,43 +1,57 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
+
+
+import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, CardImg, Input, InputGroupAddon, InputGroup, Button } from 'reactstrap';
 
 
 
-function EditReview(props) {
+const EditReview = (props) => {
+    const [qurey, setQurey] = useState('');
+    const [results, setResults] = useState({});
+    const [userID, setUserID] = useState(props.userTitle); 
+    console.log("User ID logged in:", userID);
 
-    const [values, setValues] = useState({
-        username: "",
-        reviewTitle: "", // name of the game game
-        subReviewTitle: "", // user's review title title 
-        reviewBody: "",
-    });
-
-
-    // fetch posts input data to database reviews table
-    const handleSubmitForm = (event) => {
-        event.preventDefault();
-        fetch('http://localhost:4040/review/edit/props.userTitle', {
+    const fetchRev = () => {
+        fetch(`http://localhost:4040/review/edit/${userID}`,
+        {
             method: 'GET',
-            headers: new Headers({
-                'Content-Type': "application/json",
-                'Authorization': localStorage.token
-            })
-
-        })
-            .then(res => res.json())
-            .then(json => console.log(json))
-            .catch(err => console.log(err.message))
+            headers: new Headers(
+                {
+                    'Content-Type': "application/json",
+                    'Authorization': localStorage.token
+                }
+            )// close headers         
+        } // close method and headers for fetch 
+        )// close fetch
+        .then(res => res.json())
+        .then(json => {
+            console.log(json.review)
+            setResults(json.review)
+            console.log("testing setState of results var",results);
+        })// close .then
     }
-
+    
     return (
         <div>
-            <h1>Edit Your Reviews</h1>
-            <form onSubmit={handleSubmitForm} >
+           <button onClick={fetchRev}>Look up your reviews</button>
+           {
+               results.map(result => {
+                   return(
+                       <div key={result.id}>
+                           <h3>{result.reviewTitle}</h3>
+                           <h3>{result.subReviewTitle}</h3>
+                           <h3>{result.reviewBody}</h3>
+                        </div>
+                   )
+               }
 
-                <button name="getreviews" id="getreviews">Get your reviews</button>
-                <button name="reviewclear" id="reviewclear">Clear</button>
-            </form>
+               )
+           }
         </div>
-    );
+    )
+
 }
+
 export default EditReview;
