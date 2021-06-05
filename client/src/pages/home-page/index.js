@@ -1,14 +1,12 @@
-
 import './home.scss'
 
 import { useState, useEffect } from 'react';
-import { Card, Container } from 'reactstrap';
+import { Card, Container, Button } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 import Logo from './controller.svg';
 
-
-const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
+const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -33,14 +31,11 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
         }).then((res) => res.json())
             .then((data) => {
                 getReviews(data.review)
-
                 setGameReviews(data.review)
-
             }).catch(err => {
                 console.log("hit: ", err)
             })
     }
-
 
     const deleteReview = (review) => {
         fetch(`http://localhost:4040/review/delete/${review.id}`, {
@@ -55,34 +50,30 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
 
     useEffect(() => {
         everyPost()
-
-
     }, [])
 
     return (
         <Container fluid className="homeContent">
             <div className='review-feed-box'>
-
-<<<<<<< HEAD
-                {userTitle ? <h1>Welcome, {userTitle}</h1> : null}
-=======
+                {userTitle ? <h1>Welcome {userTitle}</h1> : null}
+                <hr />
                 {reviews?.length > 0 ? (
                     reviews?.map((review) => (
-                        <Card className="card" key={Math.random().toString(36).substr(2, 9)}>
+
+                        <Card key={Math.random().toString(36).substr(2, 9)} >
                             <li className='review'>
                                 <h2>{review?.reviewTitle}</h2>
                                 <h4>{review?.subReviewTitle}</h4>
                                 <p className='review-body'>{review?.reviewBody}</p>
                 {userTitle ? <h1>Welcome {userTitle}</h1> : null}
->>>>>>> 85f702f9dd527a1bdbd8d71ed115a85f7fbe9e80
                 <hr />
                 <Card>
                     {reviews?.length > 0 ? (
                         reviews?.reverse().map((review) => (
                             <li key={review?.id} className='review'>
                                 <div className='review-header'>
-                                    <img className='logo' src={Logo} alt="logo"/>
-                                    <img className='game-pic' src={gamePicArray} alt="Game Pic"/>
+                                    <img className='logo' src={Logo} alt="logo" />
+                                    <img className='game-pic' src={gamePicArray} alt="Game Pic" />
                                     <h2 className='game-name'>{review?.reviewTitle}</h2>
                                 </div>
                                 <hr />
@@ -94,9 +85,11 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
                                 <div className='review-footer'>
                                     <img className='userlogo' src={UserLogo} alt="user logo" />
                                     <p>Review by: {review?.username}</p>
+                                    {userTitle === review?.username ? <Button color="danger" className='deleteBtn' onClick={() => deleteReview(review)}>Delete</Button> : null}
                                 </div>
                             </li>
                         </Card>
+
                     ))
                 ) : (
                     <h1>Loading...</h1>

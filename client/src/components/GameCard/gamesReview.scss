@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     height: max-content;
 }
-
 .gameColumn {
     display: flex;
     flex-direction: column;
@@ -105,11 +104,8 @@
     margin-bottom: 20px;
     height: 60vh;
 
-    .reviewCard {
-        flex-direction: column-reverse;
-    }
-
-    .review {
+    .theReview {
+        list-style: none !important;
         width: 100%;
         padding: 10px;
         margin: auto;
@@ -133,7 +129,7 @@
             letter-spacing: 1px;
         }
 
-        .review-body {
+        .reviewBody {
             overflow: scroll;
             flex-wrap: wrap;
             height: 100px;
@@ -143,6 +139,11 @@
             border: 3px solid #ffbc046c;
             box-shadow: 2px 2px 3px black;
             text-align: left;
+            padding: 5px;
         }
     }
+}
+
+.deleteBtn {
+    margin-top: 10px;
 }

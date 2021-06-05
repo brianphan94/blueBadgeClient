@@ -25,8 +25,7 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
         const json = await res.json()
         setGames(json.results)
         setNextUrl(json.next)
-        setPrevUrl(json.previous)
-       
+        setPrevUrl(json.previous)   
     }
 
     const searchInput = async () => {
@@ -39,7 +38,7 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
         })
         const json = await res.json()
         setGames(json.results)
-        setNextUrl(json.next)
+        setNextUrl(json.next)     
     }
 
     useEffect(() => {
