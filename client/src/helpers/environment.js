@@ -1,9 +1,9 @@
 let APIURL = ''
 
-switch(window.location.localhost){
+switch (window.location.hostname) {
     case 'localhost':
     case '127.0.0.1':
-        APIURL='http://localhost:4040'
+        APIURL='http://localhost:3000'
         break
     case 'am-my-btnmash.heroku.com':
         APIURL='https://am-btnmash.herokuapp.com'
