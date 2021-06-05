@@ -62,15 +62,6 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
 
                         <Card key={Math.random().toString(36).substr(2, 9)} >
                             <li className='review'>
-                                <h2>{review?.reviewTitle}</h2>
-                                <h4>{review?.subReviewTitle}</h4>
-                                <p className='review-body'>{review?.reviewBody}</p>
-                {userTitle ? <h1>Welcome {userTitle}</h1> : null}
-                <hr />
-                <Card>
-                    {reviews?.length > 0 ? (
-                        reviews?.reverse().map((review) => (
-                            <li key={review?.id} className='review'>
                                 <div className='review-header'>
                                     <img className='logo' src={Logo} alt="logo" />
                                     <img className='game-pic' src={gamePicArray} alt="Game Pic" />
@@ -89,7 +80,6 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
                                 </div>
                             </li>
                         </Card>
-
                     ))
                 ) : (
                     <h1>Loading...</h1>
