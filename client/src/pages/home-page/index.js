@@ -52,7 +52,7 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray }) => {
         <Container fluid className="homeContent">
             <div className='review-feed-box'>
 
-                {userTitle ? <h1>Welcome {userTitle}</h1> : null}
+                {userTitle ? <h1>Welcome, {userTitle}</h1> : null}
                 <hr />
                 <Card>
                     {reviews?.length > 0 ? (
