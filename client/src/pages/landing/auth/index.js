@@ -1,8 +1,6 @@
 import Login from '../login'
 import Register from '../register'
 
-
-
 const Auth = (props) => {
 
     return (

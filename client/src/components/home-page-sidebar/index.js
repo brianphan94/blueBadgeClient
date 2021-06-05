@@ -15,26 +15,29 @@ const Sidebar = (props) => {
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
-
-
+    const [gamePicArray, setGamePicArray] = useState([])
+   
     useEffect(() => {
-        if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')) {
+        if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
+            //setGamePicArray(localStorage.getItem('Game Pic Array'))
             let retrieved = localStorage.getItem('Game Reviews')
             setGameReviews(JSON.parse(retrieved))
+            // let img = localStorage.getItem('Game Pic Array')
+            // setGamePicArray(JSON.parse(img))
         }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('Game Pic', gamePic)
         localStorage.setItem('Game Name', gameName)
+        //localStorage.setItem('Game Pic Array', gamePicArray)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
+        //localStorage.setItem('Game Pic Array', JSON.stringify(gamePicArray))
     }, [gamePic, gameName, gameReviews])
 
-
     const toggleNavbar = () => setCollapsed(!collapsed)
-
 
     const everyPost = () => {
         fetch(`http://localhost:4040/review/all`, {
@@ -50,7 +53,7 @@ const Sidebar = (props) => {
                 console.log("hit: ", err)
             })
     }
-
+    
     useEffect(() => {
         everyPost()
     },[])
@@ -86,15 +89,15 @@ const Sidebar = (props) => {
 
             <div className="Route">
                 <Switch>
-                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} /> </Route>
+                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/> </Route>
                     <Route exact path="/home">
-                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} />
+                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} gamePicArray={gamePicArray}/>
                     </Route>
                     <Route exact path="/profile" >
                         <Profile token={props.token} gameReviews={gameReviews} />
                     </Route>
                     <Route exact path="/games">
-                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} />
+                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} setGamePicArray={setGamePicArray}/>
                     </Route>
                     <Route exact path="/games/:id">
                         <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
