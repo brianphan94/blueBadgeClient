@@ -3,6 +3,7 @@ import './gamesReview.scss'
 import { Button, Col, Container, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form, Card, FormText, CardTitle, CardSubtitle } from 'reactstrap'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
+import APIURL from '../../helpers/environment'
 
 const GameCard = (props) => {
 
@@ -19,7 +20,7 @@ const GameCard = (props) => {
 
     const reviewGame = async (e) => {
         e.preventDefault()
-        const res = await fetch('http://localhost:4040/review/post', {
+        const res = await fetch(`${APIURL}/review/post`, {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ const GameCard = (props) => {
     }
 
     const deleteReview = (review) => {
-        fetch(`http://localhost:4040/review/delete/${review.game.id}`, {
+        fetch(`${APIURL}/review/delete/${review.game.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

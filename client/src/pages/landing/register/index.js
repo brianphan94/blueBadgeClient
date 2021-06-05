@@ -2,6 +2,7 @@ import './register.scss'
 
 import { useEffect, useState } from 'react'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Button, Input, FormText, Alert } from 'reactstrap'
+import APIURL from '../../../helpers/environment'
 
 const Register = (props) => {
     const [email, setEmail] = useState('')
@@ -25,7 +26,7 @@ const Register = (props) => {
 
     let authTwo = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4040/user/register', {
+        fetch(`${APIURL}/user/register`, {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json'

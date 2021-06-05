@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
 import {Col, Form, Input, Button, Label, FormGroup, Alert} from 'reactstrap'
+import APIURL from '../../../helpers/environment'
 
 const Login = (props) => {
     const [email, setEmail] = useState('')
@@ -9,7 +10,7 @@ const Login = (props) => {
   
     let auth = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4040/user/login', {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             headers: new Headers({
                 'Content-type': 'application/json'

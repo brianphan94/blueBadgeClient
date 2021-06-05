@@ -5,6 +5,7 @@ import { Card, Container, Button } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 import Logo from './controller.svg';
+import APIURL from '../../helpers/environment'
 
 const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
 
@@ -22,7 +23,7 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
     }, [reviews])
 
     const everyPost = () => {
-        fetch(`http://localhost:4040/review/all`, {
+        fetch(`${APIURL}/review/all`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
     }
 
     const deleteReview = (review) => {
-        fetch(`http://localhost:4040/review/delete/${review.id}`, {
+        fetch(`${APIURL}/review/delete/${review.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

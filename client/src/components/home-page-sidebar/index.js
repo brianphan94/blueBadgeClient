@@ -6,6 +6,7 @@ import Home from '../../pages/home-page/index'
 import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
 import Review from '../../pages/review'
+import APIURL from '../../../src/helpers/environment'
 
 import './sidebar.scss'
 
@@ -21,26 +22,21 @@ const Sidebar = (props) => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
-            //setGamePicArray(localStorage.getItem('Game Pic Array'))
             let retrieved = localStorage.getItem('Game Reviews')
             setGameReviews(JSON.parse(retrieved))
-            // let img = localStorage.getItem('Game Pic Array')
-            // setGamePicArray(JSON.parse(img))
         }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('Game Pic', gamePic)
         localStorage.setItem('Game Name', gameName)
-        //localStorage.setItem('Game Pic Array', gamePicArray)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
-        //localStorage.setItem('Game Pic Array', JSON.stringify(gamePicArray))
     }, [gamePic, gameName, gameReviews])
 
     const toggleNavbar = () => setCollapsed(!collapsed)
 
     const everyPost = () => {
-        fetch(`http://localhost:4040/review/all`, {
+        fetch(`${APIURL}/review/all`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
