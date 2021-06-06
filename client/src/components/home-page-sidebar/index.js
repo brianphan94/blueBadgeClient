@@ -12,12 +12,12 @@ import './sidebar.scss'
 
 const Sidebar = (props) => {
 
-    const [gameName, setGameName] = useState('')    
+    const [gameName, setGameName] = useState('')
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
     const [gamePicArray, setGamePicArray] = useState([])
-   
+
     useEffect(() => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
@@ -49,10 +49,10 @@ const Sidebar = (props) => {
                 console.log("hit: ", err)
             })
     }
-    
+
     useEffect(() => {
         everyPost()
-    },[])
+    }, [])
 
 
     return (
@@ -63,7 +63,7 @@ const Sidebar = (props) => {
                     <Collapse isOpen={!collapsed}>
                         <Nav>
                             <NavItem>
-                                <Link to="/home">Home</Link>
+                                <Link to="/">Home</Link>
                             </NavItem>
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
@@ -85,15 +85,15 @@ const Sidebar = (props) => {
 
             <div className="Route">
                 <Switch>
-                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/> </Route>
-                    <Route exact path="/home">
-                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} gamePicArray={gamePicArray}/>
+                    <Route exact path="/">
+                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} />
                     </Route>
+
                     <Route exact path="/profile" >
                         <Profile token={props.token} gameReviews={gameReviews} />
                     </Route>
                     <Route exact path="/games">
-                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} setGamePicArray={setGamePicArray}/>
+                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} setGamePicArray={setGamePicArray} />
                     </Route>
                     <Route exact path="/games/:id">
                         <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />

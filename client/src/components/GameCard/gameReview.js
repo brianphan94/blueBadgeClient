@@ -92,7 +92,7 @@ const GameCard = (props) => {
     }
 
     return (
-        <Container fluid='md' className='homeContent'>
+        <Container fluid='md' className='gameContent'>
             <Col className="gameColumn" md={5}>
                 <h2>{props.gameName}</h2>
                 <img src={props.gamePic} alt="Game"></img>

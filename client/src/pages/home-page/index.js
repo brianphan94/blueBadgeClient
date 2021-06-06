@@ -7,6 +7,7 @@ import UserLogo from '../../userlogo.svg';
 import Logo from './controller.svg';
 import APIURL from '../../helpers/environment'
 
+
 const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
 
     const [reviews, getReviews] = useState([])

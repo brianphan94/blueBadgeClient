@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 import {Col, Form, Input, Button, Label, FormGroup, Alert} from 'reactstrap'
 import APIURL from '../../../helpers/environment'
@@ -7,6 +8,7 @@ const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
+    const history = useHistory()
   
     let auth = (e) => {
         e.preventDefault()
@@ -26,15 +28,15 @@ const Login = (props) => {
         .then(res => res.json())
         .then(json => {
             props.setUserTitle(json.user.username)
-            props.updateToken(json.token)
-            console.log(json.token)
-            console.log(json.user.username)    
+            props.updateToken(json.token) 
+            history.push('/')
             
         })
         .catch(err => {
             setError(true)
             console.log(err)
         })
+      
     }
  
     return(
