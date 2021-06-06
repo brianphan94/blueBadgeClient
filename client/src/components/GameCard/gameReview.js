@@ -40,17 +40,6 @@ const GameCard = (props) => {
         props.everyPost()
     }
 
-    const deleteReview = (review) => {
-        fetch(`${APIURL}/review/delete/${review.game.id}`, {
-            method: 'DELETE',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': props.token
-            })
-        })
-            .then(() => props.everyPost())
-    }
-
     const display = () => {
 
         if (props.gameReviews) {
@@ -79,7 +68,7 @@ const GameCard = (props) => {
                                 <div className='reviewFooter'>
                                     {review?.game?.username === props.userTitle ? <CardSubtitle tag="h6" className="text-danger"> Review by: You</CardSubtitle> : <CardSubtitle tag="h6" className="text-muted">Review by: {review?.game?.username}</CardSubtitle>}
 
-                                    {props.userTitle === review?.game?.username ? <Button color="danger" className='deleteBtn' onClick={() => deleteReview(review)}>Delete</Button> : null}
+                                    {props.userTitle === review?.game?.username ? <Button color="danger" className='deleteBtn' onClick={() => props.deleteReview(review?.game)}>Delete</Button> : null}
                                 </div>
                             </li>
                 </Card>

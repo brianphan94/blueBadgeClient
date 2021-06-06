@@ -5,7 +5,7 @@ import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, Ca
 
 import './twitch.scss'
 
-const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
+const Twitch = ({ setGameName, setGamePic}) => {
 
     const history = useHistory()
     const [games, setGames] = useState([])
@@ -63,7 +63,7 @@ const Twitch = ({ setGameName, setGamePic, setGamePicArray }) => {
                     games?.map(game => (
                         <div key={game?.id}>
                             {game?.background_image ? <Col className="games" sm="4">
-                                <Card className="gameCard" onClick={() => { history.push(`/games/${game?.name}`); setGameName(game?.name); setGamePic(game?.background_image); setGamePicArray(game?.background_image); }}>
+                                <Card className="gameCard" onClick={() => { history.push(`/games/${game?.name}`); setGameName(game?.name); setGamePic(game?.background_image);}}>
                                     <CardBody>
                                         <CardTitle>{game?.name}</CardTitle>
                                         <CardSubtitle className="mb-2 text-muted">Released: {game?.released}</CardSubtitle>
