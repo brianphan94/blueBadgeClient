@@ -22,6 +22,7 @@ const Sidebar = (props) => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
+            setGamePicArray(localStorage.getItem('Game Pic Array'))
             let retrieved = localStorage.getItem('Game Reviews')
             setGameReviews(JSON.parse(retrieved))
         }
@@ -30,6 +31,7 @@ const Sidebar = (props) => {
     useEffect(() => {
         localStorage.setItem('Game Pic', gamePic)
         localStorage.setItem('Game Name', gameName)
+        localStorage.setItem('Game Pic Array', gamePicArray)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
     }, [gamePic, gameName, gameReviews])
 
@@ -86,7 +88,7 @@ const Sidebar = (props) => {
             <div className="Route">
                 <Switch>
                     <Route exact path="/">
-                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} />
+                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} gamePicArray={gamePicArray}/>
                     </Route>
 
                     <Route exact path="/profile" >
