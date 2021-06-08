@@ -5,12 +5,10 @@
 }
 
 .modalForm {
-
     height: max-content;
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: 5px 5px 10px;
-
     background-color: rgba(255, 255, 255, 0.959);
 
     h3 {
@@ -31,14 +29,12 @@
     }
 
     button {
-
         border: none;
         box-shadow: 2px 2px 3px black;
         color: white;
         font-size: large;
         font-weight: bold;
         letter-spacing: 1px;
-
 
         &:hover {
             transform: scale(1.04);

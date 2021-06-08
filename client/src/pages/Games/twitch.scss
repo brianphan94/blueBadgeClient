@@ -1,10 +1,10 @@
 .gameContent {
-    overflow: scroll;
+    overflow: scroll !important;
     display: block !important;
     box-shadow: 8px 0px 5px black;
     background-color: rgba(243, 245, 250, 0.221);
-    height: 72vh;
-
+    height: 72vh !important;
+    
     h4 {
         font-family: "Press Start 2P";
         text-shadow: 2px 2px 3px black;
@@ -81,6 +81,7 @@
     margin: auto;
     padding: 15px;
     float: left;
+    
     .card-body {
         margin: 5px;
         padding: 0px;

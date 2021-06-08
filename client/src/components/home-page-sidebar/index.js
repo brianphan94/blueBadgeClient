@@ -6,41 +6,37 @@ import Home from '../../pages/home-page/index'
 import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
 import Review from '../../pages/review'
+import APIURL from '../../../src/helpers/environment'
+import EditReview from '../Update-Review/edit'
 
 import './sidebar.scss'
 
 const Sidebar = (props) => {
 
-    const [gameName, setGameName] = useState('')    
+    const [gameName, setGameName] = useState('')
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
-    const [gamePicArray, setGamePicArray] = useState([])
-   
+  
     useEffect(() => {
-        if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews', 'Game Pic Array')) {
+        if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')) {
             setGamePic(localStorage.getItem('Game Pic'))
             setGameName(localStorage.getItem('Game Name'))
-            //setGamePicArray(localStorage.getItem('Game Pic Array'))
             let retrieved = localStorage.getItem('Game Reviews')
             setGameReviews(JSON.parse(retrieved))
-            // let img = localStorage.getItem('Game Pic Array')
-            // setGamePicArray(JSON.parse(img))
         }
     }, [])
 
     useEffect(() => {
         localStorage.setItem('Game Pic', gamePic)
         localStorage.setItem('Game Name', gameName)
-        //localStorage.setItem('Game Pic Array', gamePicArray)
         localStorage.setItem('Game Reviews', JSON.stringify(gameReviews))
-        //localStorage.setItem('Game Pic Array', JSON.stringify(gamePicArray))
     }, [gamePic, gameName, gameReviews])
 
     const toggleNavbar = () => setCollapsed(!collapsed)
 
     const everyPost = () => {
-        fetch(`http://localhost:4040/review/all`, {
+        fetch(`${APIURL}/review/all`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -49,15 +45,26 @@ const Sidebar = (props) => {
         }).then((res) => res.json())
             .then((data) => {
                 setGameReviews(data.review)
+               
             }).catch(err => {
                 console.log("hit: ", err)
             })
     }
-    
+
+    const deleteReview = (review) => {
+        fetch(`${APIURL}/review/delete/${review.id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        })
+            .then(() => everyPost())
+    }
+
     useEffect(() => {
         everyPost()
-    },[])
-
+    }, [])
 
     return (
         <div className="header">
@@ -67,7 +74,7 @@ const Sidebar = (props) => {
                     <Collapse isOpen={!collapsed}>
                         <Nav>
                             <NavItem>
-                                <Link to="/home">Home</Link>
+                                <Link to="/">Home</Link>
                             </NavItem>
                             <NavItem>
                                 <Link to="/profile">Profile</Link>
@@ -80,6 +87,10 @@ const Sidebar = (props) => {
                                 <Link to="/review">Reviews</Link>
                             </NavItem>
 
+                            <NavItem>
+                                <Link to="/edit">Edit</Link>
+                            </NavItem>
+
                             <Button className="logout" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
@@ -89,22 +100,34 @@ const Sidebar = (props) => {
 
             <div className="Route">
                 <Switch>
-                    <Route exact path="/"><Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/> </Route>
-                    <Route exact path="/home">
-                        <Home setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic} gamePicArray={gamePicArray}/>
+                    <Route exact path="/">
+                        <Home deleteReview={deleteReview} setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/>
                     </Route>
+
                     <Route exact path="/profile" >
-                        <Profile token={props.token} gameReviews={gameReviews} />
+                        <Profile userTitle={props.userTitle} token={props.token} deleteReview={deleteReview} gameReviews={gameReviews} />
                     </Route>
                     <Route exact path="/games">
-                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} setGamePicArray={setGamePicArray}/>
+                        <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} />
                     </Route>
                     <Route exact path="/games/:id">
-                        <GameCard gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
+                        <GameCard 
+                        deleteReview={deleteReview} 
+                        gameReviews={gameReviews} 
+                        everyPost={everyPost} 
+                        gameName={gameName} 
+                        gamePic={gamePic} 
+                        token={props.token}
+                        userTitle={props.userTitle} />
                     </Route>
                     <Route exact path="/review">
                         <Review token={props.token} />
                     </Route>
+
+                    <Route exact path="/edit">
+                        <EditReview token={props.token} userTitle={props.userTitle} />
+                    </Route>
+
                 </Switch>
             </div>
         </div>

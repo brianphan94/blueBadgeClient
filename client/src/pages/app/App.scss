@@ -101,20 +101,10 @@ button {
     font-size: normal;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
 
     &:hover {
         color: black;
         text-shadow: none;
     }
 }
-
-// Footer {
-//     display: flex;
-//     //transform: translate(25%, -25%);
-//     position:relative;
-//     left:0px;
-//     bottom:0px;
-//     width:100%;
-//     //z-index: 999;
-// }

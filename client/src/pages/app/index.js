@@ -33,7 +33,9 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (token === localStorage.getItem('token') ? <Sidebar token={token} userTitle={userTitle} clickLogout={clearToken} /> : <Auth setUserTitle={setUserTitle} updateToken={updateToken} />)
+    return (
+      token === localStorage.getItem('token') ? <Sidebar token={token} userTitle={userTitle} clickLogout={clearToken} /> : <Auth setUserTitle={setUserTitle} updateToken={updateToken} />          
+      )
   }
 
   return (
@@ -41,8 +43,6 @@ function App() {
       <Header />
       {protectedViews()}
       <Footer />
-
-
     </div>
   );
 }

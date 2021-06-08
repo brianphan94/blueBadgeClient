@@ -5,8 +5,9 @@ import { Card, Container, Button } from 'reactstrap';
 
 import UserLogo from '../../userlogo.svg';
 import Logo from './controller.svg';
+import APIURL from '../../helpers/environment'
 
-const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
+const Home = ({ token, userTitle, setGameReviews}) => {
 
     const [reviews, getReviews] = useState([])
 
@@ -22,7 +23,7 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
     }, [reviews])
 
     const everyPost = () => {
-        fetch(`http://localhost:4040/review/all`, {
+        fetch(`${APIURL}/review/all`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
     }
 
     const deleteReview = (review) => {
-        fetch(`http://localhost:4040/review/delete/${review.id}`, {
+        fetch(`${APIURL}/review/delete/${review.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -64,7 +65,6 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
                             <li className='review'>
                                 <div className='review-header'>
                                     <img className='logo' src={Logo} alt="logo" />
-                                    <img className='game-pic' src={gamePicArray} alt="Game Pic" />
                                     <h2 className='game-name'>{review?.reviewTitle}</h2>
                                 </div>
                                 <hr />
@@ -76,11 +76,10 @@ const Home = ({ token, userTitle, setGameReviews, gamePicArray}) => {
                                 <div className='review-footer'>
                                     <img className='userlogo' src={UserLogo} alt="user logo" />
                                     <p>Review by: {review?.username}</p>
-                                    {userTitle === review?.username ? <Button color="danger" className='deleteBtn' onClick={() => deleteReview(review)}>Delete</Button> : null}
+                                    {userTitle === review?.username ? <Button color="danger" className='delete-btn' onClick={() => deleteReview(review)}>Delete</Button> : null}
                                 </div>
                             </li>
                         </Card>
-
                     ))
                 ) : (
                     <h1>Loading...</h1>

@@ -2,7 +2,9 @@ footer {
     color: #ffbc04;
     font-size: larger;
     text-shadow: 1px 1px 1px black;
-    width: max-content;
-    margin: auto;
     padding: 0px;
+
+    .footerText {
+        margin: auto;
+    }
 }
