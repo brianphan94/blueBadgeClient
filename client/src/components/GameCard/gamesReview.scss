@@ -146,4 +146,34 @@
 
 .deleteBtn {
     margin-top: 10px;
+    font-size: large !important;
+}
+
+.saveBtn {
+    color:white !important;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: large !important;
+}
+
+.editBtn {
+    float: right;
+    margin-bottom: 10px;
+    font-size: large;
+    color:rgba(0, 0, 0, 0.541);
+    margin-right: 10px;
+
+    &:hover{
+        color: black;
+        cursor: pointer;
+    }
+}
+
+.editBody{
+    display: block;
+    box-shadow: 2px 2px 3px black;
+    margin-top: 10px;
+    word-wrap: break-word !important;
+    height:100%;
+    
 }

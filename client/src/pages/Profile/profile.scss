@@ -1,13 +1,12 @@
 .gameContent {
     padding: 20px;
-    height:100%;
+    height: 100%;
 }
 
 .username {
     font-size: 50px;
     display: flex;
     justify-content: center;
-    
 }
 
 .user-info {
@@ -25,10 +24,9 @@
     z-index: 999;
 }
 
-
 .review-info {
     padding: 10px;
-    width: 100%;
+    width: 80%;
 }
 
 .review-title {
@@ -37,8 +35,9 @@
 }
 
 .review-body {
-    border:5px solid white;
+    border: 5px solid white;
     background-color: white;
+    word-wrap: break-word;
 }
 
 .user-container {
@@ -60,9 +59,9 @@
     padding: 10px;
 }
 
-.delete-btn{
+.delete-btn {
     margin-bottom: 10px;
-    margin-left: 2%
+    margin-left: 2%;
 }
 
 // .gamepic{
@@ -78,4 +77,3 @@
 //     width: 65%;
 //     transform: translate(50%);
 // }
-

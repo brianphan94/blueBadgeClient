@@ -6,7 +6,7 @@ import UserLogo from '../../userlogo.svg';
 
 const Profile = (props) => {
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(props.userTitle)
 
     let user = []
     const searchUsers = () => {

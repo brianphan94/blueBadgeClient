@@ -7,6 +7,7 @@ import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
 import Review from '../../pages/review'
 import APIURL from '../../../src/helpers/environment'
+import EditReview from '../Update-Review/edit'
 
 import './sidebar.scss'
 
@@ -16,8 +17,7 @@ const Sidebar = (props) => {
     const [gamePic, setGamePic] = useState()
     const [collapsed, setCollapsed] = useState(true)
     const [gameReviews, setGameReviews] = useState([])
-
-
+  
     useEffect(() => {
         if (localStorage.getItem('Game Pic', 'Game Name', 'Game Reviews')) {
             setGamePic(localStorage.getItem('Game Pic'))
@@ -45,6 +45,7 @@ const Sidebar = (props) => {
         }).then((res) => res.json())
             .then((data) => {
                 setGameReviews(data.review)
+               
             }).catch(err => {
                 console.log("hit: ", err)
             })
@@ -64,7 +65,6 @@ const Sidebar = (props) => {
     useEffect(() => {
         everyPost()
     }, [])
-
 
     return (
         <div className="header">
@@ -87,6 +87,10 @@ const Sidebar = (props) => {
                                 <Link to="/review">Reviews</Link>
                             </NavItem>
 
+                            <NavItem>
+                                <Link to="/edit">Edit</Link>
+                            </NavItem>
+
                             <Button className="logout" onClick={props.clickLogout}>Logout</Button>
                         </Nav>
                     </Collapse>
@@ -97,7 +101,7 @@ const Sidebar = (props) => {
             <div className="Route">
                 <Switch>
                     <Route exact path="/">
-                        <Home  deleteReview={deleteReview} setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/>
+                        <Home deleteReview={deleteReview} setGameReviews={setGameReviews} userTitle={props.userTitle} token={props.token} gamePic={gamePic}/>
                     </Route>
 
                     <Route exact path="/profile" >
@@ -107,11 +111,23 @@ const Sidebar = (props) => {
                         <Twitch setGameName={setGameName} setGamePic={setGamePic} token={props.token} />
                     </Route>
                     <Route exact path="/games/:id">
-                        <GameCard deleteReview={deleteReview} gameReviews={gameReviews} everyPost={everyPost} gameName={gameName} gamePic={gamePic} token={props.token} userTitle={props.userTitle} />
+                        <GameCard 
+                        deleteReview={deleteReview} 
+                        gameReviews={gameReviews} 
+                        everyPost={everyPost} 
+                        gameName={gameName} 
+                        gamePic={gamePic} 
+                        token={props.token}
+                        userTitle={props.userTitle} />
                     </Route>
                     <Route exact path="/review">
                         <Review token={props.token} />
                     </Route>
+
+                    <Route exact path="/edit">
+                        <EditReview token={props.token} userTitle={props.userTitle} />
+                    </Route>
+
                 </Switch>
             </div>
         </div>

@@ -13,6 +13,8 @@ const Twitch = ({ setGameName, setGamePic}) => {
     const [prevUrl, setPrevUrl] = useState('')
     const [nextUrl, setNextUrl] = useState('')
     const [search, setSearch] = useState('')
+    const [backUrl, setBackUrl] = useState('')
+   
 
     let TwitchAPI = async () => {
 
@@ -25,7 +27,7 @@ const Twitch = ({ setGameName, setGamePic}) => {
         const json = await res.json()
         setGames(json.results)
         setNextUrl(json.next)
-        setPrevUrl(json.previous)   
+        setPrevUrl(json.previous)     
     }
 
     const searchInput = async () => {
@@ -38,19 +40,21 @@ const Twitch = ({ setGameName, setGamePic}) => {
         })
         const json = await res.json()
         setGames(json.results)
-        setNextUrl(json.next)     
+        setNextUrl(json.next) 
+        setPrevUrl(json.previous)    
     }
 
     useEffect(() => {
         TwitchAPI()
-    }, [gameUrl])
+        setBackUrl('https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&page_size=12&ordering=-released,rating')
+    }, [gameUrl, backUrl])
 
     return (
         <div>
             <Container fluid="md" className="gameContent">
                 <h4>Search and Review Games!</h4>
                 <hr />
-                {nextUrl === null ? <Button color="warning" className="next" onClick={() => {setGameUrl('https://api.rawg.io/api/games?key=6f82131966574246ad0c430c352e9788&page=1&page_size=12&ordering=-released,rating'); setSearch('')}}>Back</Button> : <Button color="warning" className="next" onClick={() => setGameUrl(nextUrl)} >Next</Button>}
+                {nextUrl === null ? <Button color="warning" className="next" onClick={() => {setGameUrl(backUrl); setBackUrl(gameUrl)}}>Back</Button> : <Button color="warning" className="next" onClick={() => setGameUrl(nextUrl)} >Next</Button>}
                 {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={() => setGameUrl(prevUrl)}>Previous</Button>}
                 <InputGroup className="inputGroup">
                     <Input value={search} onChange={(e) => setSearch(e.target.value)} />

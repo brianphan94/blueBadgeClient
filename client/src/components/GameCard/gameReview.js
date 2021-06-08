@@ -4,6 +4,7 @@ import { Button, Col, Container, Modal, ModalHeader, ModalBody, ModalFooter, Inp
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import APIURL from '../../helpers/environment'
+import { FaEdit, FaRegWindowClose } from 'react-icons/fa'
 
 const GameCard = (props) => {
 
@@ -13,9 +14,14 @@ const GameCard = (props) => {
     const [subReviewTitle, setSubReviewTitle] = useState('')
     const [reviewBody, setReviewBody] = useState('')
     const [modal, setModal] = useState(false)
+    const [updateActive, setUpdateActive] = useState(false)
+    const [reviewToUpdate, setReviewToUpdate] = useState('')
+    const [editBody, setEditBody] = useState('')
+
     let newArr = []
 
     const toggle = () => setModal(!modal)
+
     const closeBtn = <Button className="close" color="danger" onClick={toggle}>&times;</Button>
 
     const reviewGame = async (e) => {
@@ -35,9 +41,28 @@ const GameCard = (props) => {
         })
         const json = await res.json()
         console.log(json)
-        setReviewBody('')
-        setSubReviewTitle('')
         props.everyPost()
+        setReviewTitle('')
+        setReviewBody('')
+    }
+
+    const updateRev = async (review) => {
+
+        console.log(review.id)
+        const res = await fetch(`${APIURL}/review/update/${review.id}`, {
+            method: 'PUT',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            }),
+            body: JSON.stringify({
+                reviewBody: editBody
+            })
+        })
+        const json = await res.json()
+        console.log(json)
+        props.everyPost()
+        setEditBody('')
     }
 
     const display = () => {
@@ -55,27 +80,66 @@ const GameCard = (props) => {
             <Col md={6} className="reviewColumn">
                 <h2 className='reviewsHeader'>Reviews for <i>{props.gameName}</i></h2>
                 <hr />
-                    {newArr.length > 0 ? (
-                        newArr.reverse().map((review) => (
-                            <Card className="reviewCard" key={Math.random().toString(36).substr(2, 9)} >
-                            <li  className='theReview'>
+                {newArr.length > 0 ? (
+                    newArr.reverse().map((review) => (
+                        <Card className="reviewCard" key={Math.random().toString(36).substr(2, 9)} >
+                            <li className='theReview'>
                                 <CardTitle tag="h3">{review?.game?.reviewTitle}</CardTitle>
                                 <hr />
-                                <CardSubtitle tag="h5" className="text-muted">{review?.game?.subReviewTitle}</CardSubtitle>
 
-                                <p className='reviewBody'>{review?.game?.reviewBody}</p>
+                                {props.userTitle === review?.game?.username ?
+                                    <FaEdit className="editBtn"
+                                        onClick={() => {
+                                            setUpdateActive(true);
+                                            setReviewToUpdate(review?.game?.id)
+                                        }} />
+                                    : null}
+
+                                {updateActive && props.userTitle === review?.game?.username && reviewToUpdate === review?.game?.id ?
+                                    <FaRegWindowClose
+                                        className="editBtn"
+                                        onClick={() => setUpdateActive(false)} />
+                                    : null}
+
+                                
+                                     <CardSubtitle tag="h5" className="text-muted">{review?.game?.subReviewTitle}</CardSubtitle>
+
+                                {updateActive && props.userTitle === review?.game?.username && reviewToUpdate === review?.game?.id ?
+                                    <Input className="editBody"
+                                        value={editBody}
+                                        placeholder={review?.game?.reviewBody}
+                                        autoFocus
+                                        required
+                                        onChange={(e) => setEditBody(e.target.value)} />
+                                    : <p className='reviewBody'>{review?.game?.reviewBody}</p>}
+
                                 <hr />
+
                                 <div className='reviewFooter'>
+
                                     {review?.game?.username === props.userTitle ? <CardSubtitle tag="h6" className="text-danger"> Review by: You</CardSubtitle> : <CardSubtitle tag="h6" className="text-muted">Review by: {review?.game?.username}</CardSubtitle>}
 
-                                    {props.userTitle === review?.game?.username ? <Button color="danger" className='deleteBtn' onClick={() => props.deleteReview(review?.game)}>Delete</Button> : null}
+                                    {props.userTitle === review?.game?.username ?
+                                        <Button color="danger"
+                                            className='deleteBtn'
+                                            onClick={() => props.deleteReview(review?.game)}>Delete</Button>
+                                        : null}
+
+                                    {updateActive && props.userTitle === review?.game?.username && reviewToUpdate === review?.game?.id ?
+                                        <Button color="warning"
+                                            className="saveBtn"
+                                            onClick={() => {
+                                                updateRev(review?.game);
+                                                setUpdateActive(false)
+                                            }}>Save</Button>
+                                        : null}
                                 </div>
                             </li>
-                </Card>
-                        ))
-                    ) : (
-                        <h3 className="noReviews">Be the first to leave a review!</h3>
-                    )}
+                        </Card>
+                    ))
+                ) : (
+                    <h3 className="noReviews">Be the first to leave a review!</h3>
+                )}
             </Col>
         )
     }
