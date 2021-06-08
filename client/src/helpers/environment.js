@@ -5,7 +5,7 @@ switch (window.location.hostname) {
     case '127.0.0.1':
         APIURL='http://localhost:4040'
         break
-    case 'https://am-my-btnmash.herokuapp.com':
+    case 'am-my-btnmash.herokuapp.com':
         APIURL='https://am-btnmash.herokuapp.com'
 }
 
