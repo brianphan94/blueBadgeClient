@@ -54,7 +54,7 @@ const Twitch = ({ setGameName, setGamePic}) => {
             <Container fluid="md" className="gameContent">
                 <h4>Search and Review Games!</h4>
                 <hr />
-                {nextUrl === null ? <Button color="warning" className="next" onClick={() => {setGameUrl(backUrl); setBackUrl(gameUrl)}}>Back</Button> : <Button color="warning" className="next" onClick={() => setGameUrl(nextUrl)} >Next</Button>}
+                {nextUrl === null ? <Button color="warning" className="next" onClick={() => {setGameUrl(backUrl); setBackUrl(gameUrl); setSearch('')}}>Back</Button> : <Button color="warning" className="next" onClick={() => setGameUrl(nextUrl)} >Next</Button>}
                 {prevUrl === null || !prevUrl ? null : <Button color="warning" className="prev" onClick={() => setGameUrl(prevUrl)}>Previous</Button>}
                 <InputGroup className="inputGroup">
                     <Input value={search} onChange={(e) => setSearch(e.target.value)} />

@@ -88,7 +88,7 @@ const Sidebar = (props) => {
                             </NavItem>
 
                             <NavItem>
-                                <Link to="/edit">Edit</Link>
+                                <Link to="/edit">Edit Reviews</Link>
                             </NavItem>
 
                             <Button className="logout" onClick={props.clickLogout}>Logout</Button>
@@ -121,7 +121,10 @@ const Sidebar = (props) => {
                         userTitle={props.userTitle} />
                     </Route>
                     <Route exact path="/review">
-                        <Review token={props.token} />
+                        <Review token={props.token} userTitle={props.userTitle} />
+                    </Route>
+                    <Route exact path="/edit">
+                        <EditReview token={props.token} userTitle={props.userTitle} /> 
                     </Route>
 
                     <Route exact path="/edit">
