@@ -49,9 +49,7 @@ const Register = (props) => {
             })
             .catch(err => {
                 console.log(err)
-                if (!props.token) {
-                    setError(true)
-                }
+                setError(true)
             })
     }
 
