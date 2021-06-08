@@ -4,8 +4,8 @@ const Footer = () => {
 
     return (
 
-        <footer>
-            <p>© 2021 Btn.Mash | Brian Phan | Jason Henson | Ayanna Miller</p>
+        <footer className="navbar bottom">
+            <p className="footerText">© 2021 Btn.Mash | Brian Phan | Jason Henson | Ayanna Miller</p>
         </footer>
 
     )

@@ -1,34 +1,32 @@
 .gameContent {
     padding: 20px;
-}
-
-.users {
-    display: flex;
-    align-content: center;
-    border: 5px solid black;
-    height: 60vh;
-    padding: 1rem;
-    margin: 1rem;
+    height: 100%;
 }
 
 .username {
     font-size: 50px;
     display: flex;
     justify-content: center;
-    
 }
 
 .user-info {
-    border: 1px solid aqua;
+    padding: 15px;
+    border-radius: 1em;
+    margin-left: 20px;
+    margin-top: 20px;
     background-color: white;
+    width: 300px;
+    height: 600px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 200px;
+    z-index: 999;
 }
 
 .review-info {
-    padding:10px;
+    padding: 10px;
+    width: 80%;
 }
 
 .review-title {
@@ -37,14 +35,14 @@
 }
 
 .review-body {
-    border:5px solid white;
+    border: 5px solid white;
     background-color: white;
+    word-wrap: break-word;
 }
 
 .user-container {
     display: flex;
     justify-content: space-between;
-    border: 3px solid aqua;
 }
 
 .user-picture {
@@ -56,3 +54,26 @@
     margin-right: auto;
     width: 30%;
 }
+
+.text-muted {
+    padding: 10px;
+}
+
+.delete-btn {
+    margin-bottom: 10px;
+    margin-left: 2%;
+}
+
+// .gamepic{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+//     margin: 5px;
+//     opacity: 75%;
+//     z-index:999;
+//     height: 130px;
+//     right: 50%;
+//     width: 65%;
+//     transform: translate(50%);
+// }
