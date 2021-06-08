@@ -4,6 +4,7 @@ import { Button, Col, Container, Modal, ModalHeader, ModalBody, ModalFooter, Inp
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import APIURL from '../../helpers/environment'
+
 import { FaEdit, FaRegWindowClose } from 'react-icons/fa'
 
 const GameCard = (props) => {

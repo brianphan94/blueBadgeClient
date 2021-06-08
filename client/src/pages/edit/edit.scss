@@ -1,0 +1,13 @@
+.reviewOutput {
+    overflow: scroll !important;
+    display: block !important;
+    box-shadow: 8px 0px 5px black;
+    background-color: rgba(243, 245, 250, 0.221);
+    height: 72vh !important;
+    
+    h5 {       
+        text-shadow: 2px 2px 3px black;
+        color: white;
+        letter-spacing: 1px;
+    }
+}
