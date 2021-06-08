@@ -7,7 +7,7 @@ import Twitch from '../../pages/Games/twitch'
 import GameCard from '../GameCard/gameReview'
 import Review from '../../pages/review'
 import APIURL from '../../../src/helpers/environment'
-import EditReview from '../Update-Review/edit'
+import EditReview from '../../pages/edit'
 
 import './sidebar.scss'
 

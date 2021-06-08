@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-// import { Input } from 'reactstrap';
+import './review.scss'
 
 
 
@@ -64,21 +64,21 @@ function Review(props) {
     }
 
     return (
-        <div>
+        <div className="reviewOutput">
             <h1>Post a Review</h1>
             <form onSubmit={handleSubmitForm} >
 
-                <p>Game title:</p>
+                <h5>Game title:</h5>
                 <input
                     onChange={handleReviewTitleInputChange}
                     value={values.reviewtitle}
                     type="text"
                     name="reviewtitle"
                     id="reviewtitle"
-                    placeholder="name of game?"
+                    placeholder="Name of game?"
                 />
 
-                <p>Review title:</p>
+                <h5>Review title:</h5>
                 <input
                     onChange={handleSubReviewTitleInputChange}
                     value={values.subreviewtitle}
@@ -88,7 +88,7 @@ function Review(props) {
                     placeholder="Give your review a title"
                 />  
 
-                <p>Write your review:</p>
+                <h5>Write your review:</h5>
                 <textarea
                     onChange={handleReviewBodyInputChange}
                     values={values.reviewbody}

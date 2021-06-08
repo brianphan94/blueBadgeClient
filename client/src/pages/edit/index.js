@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import { Container, Card, CardBody, CardTitle, CardSubtitle, Col, CardFooter, CardImg, Input, InputGroupAddon, InputGroup, Button } from 'reactstrap';
+import './edit.scss'; 
+
 const EditReview = (props) => {
     const [qurey, setQurey] = useState('');
     const [results, setResults] = useState({});
@@ -87,7 +89,7 @@ const EditReview = (props) => {
                results.map(result => {
                    return(
                        <div className="reviewOutput" key={result.id}>
-                           <h3>Game Title:</h3>
+                           <h5>Game Title:</h5>
                            <input
                                 onChange={handleReviewTitleInputChange}
                                 type="text" 
@@ -96,7 +98,7 @@ const EditReview = (props) => {
                                 id="reviewtitle" 
                            />
                             
-                            <h3>Your Review Title:</h3>
+                            <h5>Your Review Title:</h5>
                            <input 
                                 onChange={handleSubReviewTitleInputChange}
                                 type="text" 
@@ -105,7 +107,7 @@ const EditReview = (props) => {
                                 id="subreviewtitle" 
                            />
                            
-                           <h3>Your Review:</h3>
+                           <h5>Your Review:</h5>
                            <input 
                                 onChange={handleReviewBodyInputChange}
                                 type="text" 
