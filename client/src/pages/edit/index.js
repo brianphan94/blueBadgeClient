@@ -50,13 +50,12 @@ const EditReview = (props) => {
     }
 
     // update review 
-
-    function UpdateReview( ) {
     
         // fetch posts input data to database reviews table
-        const handleSubmitForm = (event) => {
+        const UpdateReview = (event, id) => {
             event.preventDefault();
-            fetch('http://localhost:4040/review/post', {
+            console.log("checking id in update", id, props.userTitle, values.NewReviewTitle, values.NewSubReviewTitle,values.NewReviewBody)
+            fetch(`http://localhost:4040/review/update/${id}`, {
                 method: 'PUT',
                 headers: new Headers({
                     'Content-Type': "application/json",
@@ -64,11 +63,10 @@ const EditReview = (props) => {
                 }),
                 body: JSON.stringify(
                     {
-                        id: results.id,
                         username: props.userTitle, // taking value handed down from props value will be username that is currently logged in
-                        reviewTitle: values.reviewtitle,
-                        subReviewTitle: values.subreviewtitle, 
-                        reviewBody: values.reviewbody
+                        reviewTitle: values.NewReviewTitle,
+                        subReviewTitle: values.NewSubReviewTitle, 
+                        reviewBody: values.NewReviewBody
                     }
                 )
     
@@ -78,7 +76,7 @@ const EditReview = (props) => {
                 .catch(err => console.log(err.message))
         }
     
-    }
+    
 
 
     return (
@@ -93,7 +91,7 @@ const EditReview = (props) => {
                            <input
                                 onChange={handleReviewTitleInputChange}
                                 type="text" 
-                                value={result.reviewTitle}
+                                defaultValue={result.reviewTitle}
                                 name="reviewtitle"
                                 id="reviewtitle" 
                            />
@@ -102,7 +100,7 @@ const EditReview = (props) => {
                            <input 
                                 onChange={handleSubReviewTitleInputChange}
                                 type="text" 
-                                value={result.subReviewTitle}
+                                defaultValue={result.subReviewTitle}
                                 name="subreviewtitle"
                                 id="subreviewtitle" 
                            />
@@ -111,13 +109,13 @@ const EditReview = (props) => {
                            <input 
                                 onChange={handleReviewBodyInputChange}
                                 type="text" 
-                                value={result.reviewBody}
+                                defaultValue={result.reviewBody}
                                 name="reviewbody"
                                 id="reviewbody" 
                            /> 
                            
                            <br />
-                           <button onClick={UpdateReview}>Update your Review</button>
+                           <button onClick={(event) => UpdateReview(event, result.id)} >Update your Review</button>
                            <br />
                         </div>
                    )
