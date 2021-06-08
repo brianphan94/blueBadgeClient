@@ -8,12 +8,12 @@ import Sidebar from '../../components/home-page-sidebar'
 import Footer from '../../components/footer/footer'
 
 function App() {
-  const [token, setSessionToken] = useState('')
+  const [token, setToken] = useState('')
   const [userTitle, setUserTitle] = useState('')
 
   useEffect(() => {
     if (localStorage.getItem('token', 'Username')) {
-      setSessionToken(localStorage.getItem('token'))
+      setToken(localStorage.getItem('token'))
       setUserTitle(localStorage.getItem('Username'))
     }
   }, [])
@@ -24,12 +24,12 @@ function App() {
 
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
-    setSessionToken(newToken);
+    setToken(newToken);
 
   }
   const clearToken = () => {
     localStorage.clear();
-    setSessionToken('')
+    setToken('')
   }
 
   const protectedViews = () => {
