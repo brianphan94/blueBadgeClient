@@ -5,7 +5,7 @@ const Footer = () => {
     return (
 
         <footer className="navbar bottom">
-            <p className="footerText">© 2021 Btn.Mash | Brian Phan | Jason Henson | Ayanna Miller</p>
+            <p className="footerText">© 2021 Btn.Mash | Ayanna Miller</p>
         </footer>
 
     )

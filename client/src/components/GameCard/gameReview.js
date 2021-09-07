@@ -151,7 +151,7 @@ const GameCard = (props) => {
                 <h2>{props.gameName}</h2>
                 <img src={props.gamePic} alt="Game"></img>
                 <Button color="danger" onClick={toggle}>Leave a Review!</Button>
-                <Button color="warning" onClick={() => history.push('/games')}>Back to Games!</Button>
+                <Button color="warning" onClick={() => history.push('/')}>Back to Games!</Button>
             </Col>
 
             <Modal className="gameReview" isOpen={modal} toggle={toggle}>

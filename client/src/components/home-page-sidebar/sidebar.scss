@@ -1,37 +1,34 @@
 .sideBarDiv {
-    margin-bottom: 2%;
-    margin-top: -3%;
+    display: flex;
+    justify-content: center !important;
+    margin: auto;
+    margin-top: -1%;
+    margin-bottom: 1%;
 
-    a {
-        color: white;
-        font-size: x-large;
-        text-decoration: none;
-        font-weight: bold;
+    .siteLogo {
+        width: fit-content;
 
-        &:hover {
-            text-shadow: 3px 3px 6px;
-            transition-duration: 0.3s;
-            color: white;
+        img {
+            width: 60%;
         }
     }
 
     .toggler {
-        font-size: x-large;
+        font-size: large;
         background-color: transparent;
         margin: auto;
         color: #ffba04;
         text-shadow: 1px 1px 3px white;
         letter-spacing: 1px;
-        font-family: "Press Start 2P", cursive;
+        font-family: 'Press Start 2P', cursive;
     }
 
     button {
-        background-color: #ffba04;
-        font-size: larger;
-        font-weight: bold;
-        border: none;
-        text-decoration: none;
-        padding: 10px;
+        font-size: large;
+        background-color: transparent;
+        color: #ffba04;
+        text-shadow: 1px 1px 3px white;
+        font-family: 'Press Start 2P', cursive;
 
         &:hover {
             background-color: transparent;
@@ -42,19 +39,24 @@
     li {
         padding: 8px;
         margin: auto;
-        margin-top: 2%;
     }
+}
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    opacity: 0.9;
+    margin-top: -2.5%;
+    color: white;
 
-    .logout {
-        margin: auto;
-        margin-top: 2%;
-        color: white;
+    .logoutBtn {
+        border: 2px solid #ffba04 !important;
         background-color: transparent;
-        border: 1px solid #ffba04;
 
         &:hover {
-            border: 1px solid #ffba04;
-            box-shadow: 3px 3px 4px black;
+            cursor: pointer;
+            background-color: transparent;
+            box-shadow: 1px 2px rgba(255, 255, 255, 0.5);
         }
     }
 }

@@ -8,9 +8,9 @@ const Header = () => {
 
     return (
         <div className="header">
-            <Nav>
+            {localStorage.getItem('token') ? null : <Nav>
                 <img src={Logo} alt="Logo"></img>
-            </Nav>
+            </Nav> }
         
         </div>
     )

@@ -10,6 +10,7 @@
         text-shadow: 2px 2px 3px black;
         color: white;
         letter-spacing: 1px;
+        margin-top: 2%;
     }
     .inputGroup {
         position: sticky;
@@ -32,6 +33,7 @@
     }
 
     .gameCard {
+        //width: 500px;
         &:hover {
             transform: scale(1.02);
             cursor: pointer;
@@ -78,7 +80,7 @@
 .games {
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
+    //margin: auto;
     padding: 15px;
     float: left;
     

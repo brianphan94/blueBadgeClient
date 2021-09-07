@@ -66,7 +66,7 @@ const Twitch = ({ setGameName, setGamePic}) => {
                 {games?.length > 0 ? (
                     games?.map(game => (
                         <div key={game?.id}>
-                            {game?.background_image ? <Col className="games" sm="4">
+                            {game?.background_image ? <Col className="games" sm="3" xs="12">
                                 <Card className="gameCard" onClick={() => { history.push(`/games/${game?.name}`); setGameName(game?.name); setGamePic(game?.background_image);}}>
                                     <CardBody>
                                         <CardTitle>{game?.name}</CardTitle>
